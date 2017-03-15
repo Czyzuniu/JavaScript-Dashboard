@@ -1,0 +1,21 @@
+#comptab{
+  width: 1000px;
+  height: 100px;
+  position: absolute;
+  margin-left: auto;
+  border-radius: 5px;
+  top: 85%;
+  left: 15%;
+  display: inline-block;
+  border-radius: 25px;
+  transition: 1s;
+}
+
+
+
+.miniature{
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  margin-left: 20px;
+}

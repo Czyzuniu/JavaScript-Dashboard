@@ -1,0 +1,174 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="todolist/todolist.css">
+<link rel="stylesheet" href="clock/clock.css">
+<link rel="stylesheet" href="calendar/calendar.css">
+<link rel="stylesheet" href="toolbar.css">
+<link rel="stylesheet" href="weatherV/weather.css">
+<link rel="stylesheet" href="news/news.css">
+</head>
+<body id="body">
+
+
+<div draggable="true" id="todolist" class="canDrag"  data-id="0">
+    <div id="header">
+      <button id="add">Add</button>
+      <h1> things to do... </h1>
+    </div>
+    <div id="input">
+      <input id="task" placeholder="add your task here" onfocus="setFocus(true)" onblur="setFocus(false)">
+    </div>
+    <div id="error" class="errorhide">
+      <span id="errmsg"></span>
+    </div>
+    <div id="notes">
+
+    </div>
+</div>
+
+
+
+<div id="clock" draggable="true" class="canDrag" data-id="1">
+  <i class="material-icons" style="font-size:24px" id="csettings">settings</i>
+  <span id="sett" class="hidden">
+    <div class="set">
+      <span>
+      <p> 24 Hour Time </p>
+      <i class="fa fa-toggle-on" aria-hidden="true" id="cformat"></i>
+    </span>
+    </div>
+  </span>
+<span id="time">
+  <span class="unit hour"></span>
+  <span></span>
+  <span class="unit min"></span>
+  <span class="unit ampm"></span>
+</span>
+</div>
+
+
+
+<div id="photoAlbum" draggable="true" class="canDrag"  data-id="2">
+  <div class="prev">
+    <i id="prev"class="fa fa-chevron-left"></i>
+  </div>
+    <div class="next">
+    <i id="next"class="fa fa-chevron-right"></i>
+  </div>
+    <div id="photos">
+    </div>
+      <div id="settings" class="settings-hid">
+        <h1> </h1>
+        <div id="table">
+          <table class="imageslist">
+             <thead>
+            <tr>
+              <th class="thead">id</th>
+              <th class="thead">title</th>
+              <th class="thead">image</th>
+            </tr>
+           </thead>
+        <tbody id="content">
+          <!-- I will put the table content here -->
+          </tbody>
+        </table>
+      </div>
+      <div id="deleteSelected" class="hidden">
+        <button id="delete" class="fa fa-trash">     delete selected</button>
+      </div>
+
+      <div id="upload" draggable="true" class="canDrag">
+        <form action="/api/pictures" method="post" enctype="multipart/form-data">
+          <p><input id="choosefile" name="picfile" type="file" accept="image/*"></p>
+          <p><input id="title" name="title" type="text" autofocus size="10" placeholder="enter title" minlength="4" maxlength="10"></p>
+          <button id="bupload" value="upload" type="submit" class="bsubmit">upload</button>
+        </form>
+      </div>
+    </div>
+    <canvas id="progress"></canvas>
+    <button id="bsettings">Open settings</button>
+
+</div>
+
+<div id="calendar" class="canDrag"  data-id="3" draggable="true">
+
+  <form id="formAddEv">
+  <div id="addEvents" class="hidden">
+      <i id="exit" class="fa fa-remove"></i>
+    <span id="filler">Title</span><input id="eventTitle" class="aCLASS" name="eventtitle" type="text" autofocus size="30" placeholder="enter event title" minlength="4" maxlength="20">
+    <span id="filler">Description</span><input id="eventDesc" class="aCLASS"name="eventdesc" type="text" autofocus size="30" placeholder="enter event description" minlength="4" maxlength="40">
+    <span id="filler">When?</span><input id="eventWhen" class="aCLASS"name="title" type="date" autofocus size="30" placeholder="when?">
+    <span id="filler">Event At</span><input id="eventFrom" class="aCLASS"name="from" type="time" placeholder="timeStart" value="12:00">
+    <span id="filler">Event To</span><input id="eventTo" class="aCLASS"name="to" type="time" placeholder="timeFinish" value="18:00">
+    <input type="button" name="createEvent" type="submit" value="add event to calendar" id="createEvent">
+  </div>
+</form>
+  <ul id="months">
+    <li id="previousM"> &#x2770; </li>
+    <li id="nextM">&#x2771;</li>
+    <li id="currentMonth">Current month</li>
+    <span id="year"></span>
+  </ul>
+
+
+    <ul id="weekdays">
+      <li> Mon </li>
+      <li> Tue </li>
+      <li> Wed </li>
+      <li> Thu </li>
+      <li> Fri </li>
+      <li> Sat </li>
+      <li> Sun </li>
+    </ul>
+
+    <ul id="days">
+
+
+    </ul>
+
+
+</div>
+
+<div id="weather" draggable="true" class="canDrag">
+    <div id="current">
+      
+    </div>
+    <div id="forecast"></div>
+</div>
+
+
+  <div id="news" draggable="true" data-id="5" class="canDrag">
+
+  </div>
+
+  <div id="events" draggable="true" class="canDrag" data-id="6">
+      <div id="eventoption">
+        <ul>
+          <li id="todayE" class="eventsbutton">This month</li>
+          <li id="upcomingE"class="eventsbutton">Next month</li>
+        </ul>
+      </div>
+
+        <div id="todaysEvents" class="ev"></div>
+
+        <div id="upcomingEvents"class="ev hiddenevent"></div>
+  </div>
+
+<div id="comptab" ondrop="drop(event);" ondragover="dragOver(event);" ondragenter="dragOverTaskbar(event)" ondragleave="dragLeave(event)"></div>
+<script src="index.js"></script>
+<script src="todolist/todolist.js"> </script>
+<script src="clock/clock.js"></script>
+<script src="calendar/calendar.js"></script>
+<script src="drag.js"></script>
+<script src="local/localStorage.js"></script>
+<script src="weatherV/weather.js"></script>
+<script src="news/news.js"></script>
+
+
+</body>
+
+
+</html>

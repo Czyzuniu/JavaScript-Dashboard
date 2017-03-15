@@ -1,0 +1,124 @@
+/*
+#weather{
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 414px;
+  height: 260px;
+  position: relative;
+  float: left;
+  margin: 10px;
+  background-color: rgb(184, 173, 230);
+}
+
+
+#topPanel{
+  background-color: black;
+  height: 100px;
+  border-bottom: 2px solid lightblue;
+  color: white;
+  font-size: 12px;
+  float: left;
+  width: inherit;
+}
+
+#todayTemp{
+  font-size: 40px;
+}
+
+
+.forecast{
+  border: 1px solid white;
+  width: 46px;
+  height: 75px;
+  position: relative;
+  display: inline-block;
+  padding: 0px;
+}
+
+
+#todayWeather{
+  border: 1px solid blue;
+  position:relative;
+  display: inline-block;
+  height: 75px;
+  margin-top: 10px;
+  margin-left: 6px;
+  width: 130px;
+  text-align: center;
+}
+
+
+#weekday{
+  border-bottom: 1px solid white;
+  height: 20px;
+}
+
+#weathericon{
+  border-bottom: 1px solid white;
+  height: 25px;
+}
+
+#temp{
+  height: 25px;
+}
+
+/*
+
+
+*/
+
+#weather{
+  width: 300px;
+  height: 80px;
+  position: relative;
+  float: left;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: lightblue;
+}
+
+
+#weathericon{
+  border-radius: 360px;
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 24px;
+
+}
+
+#weathericon img{
+  width: 59px;
+    height: 59px;
+    position: relative;
+    top: -7px;
+    left: -4px;
+}
+
+
+#weather h1{
+  margin: 0px;
+  float: left;
+  margin-top: 20px;
+  margin-left: 21px;
+}
+
+
+#townlocation{
+  margin: 0px;
+  float: left;
+  margin-top: 19px;
+  margin-left: 18px;
+  width: 110px;
+}
+
+
+#weathertype{
+  margin: 0px;
+  float: left;
+  margin-top: 5px;
+  margin-left: 18px;
+  width: 100px;
+}

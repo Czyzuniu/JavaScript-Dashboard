@@ -1,0 +1,254 @@
+#photoAlbum, #news, #weather, #calendar, #clock {
+  z-index: 0;
+}
+
+#photoAlbum{
+  border: 1px solid black;
+  margin: auto;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  margin: 10px;
+  border-radius: 5px;
+  border: 2px solid #666666;
+  left: 976px;
+  position: absolute;
+}
+
+.next{
+  position: absolute;
+  width: 125px;
+  height: inherit;
+  left: 125px;
+  opacity: 0;
+  transition: 1.5s;
+}
+
+.prev{
+  position: absolute;
+  width: 125px;
+  height: inherit;
+  opacity: 0;
+  transition: 1.5s;
+}
+
+.prev:hover{
+  opacity: 1;
+}
+
+.next:hover{
+  opacity: 1;
+}
+
+#photos{
+  /* border: 1px solid black; */
+  margin: 10px;
+  height: inherit;
+  width: inherit;
+  margin-bottom: 0px;
+}
+
+#bsettings{
+  position: relative;
+  margin: auto;
+  top: 5px;
+  width: inherit;
+}
+
+#photoAlbum #settings{
+  z-index: 1;
+  width: inherit;
+  /* border: 1px solid black; */
+  background-color: white;
+  position: absolute;
+  top: 0px;
+  height: inherit;
+  transition: 1s;
+  overflow: scroll;
+}
+
+
+.settings-hid{
+  visibility: hidden;
+  height: 0!important;
+  opacity: 0;
+  transition: 2s;
+
+}
+
+#settings h1{
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial;
+}
+
+#settings-header nav ul{
+  list-style-type: none;
+  margin: 0;
+  width: 400px;
+
+}
+
+#settings-header nav li{
+  float: left;
+}
+
+#settings-header li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+}
+
+
+#settings #table{
+  width: 211px;
+  height: auto;
+  position: relative;
+  margin: auto;
+  overflow: auto;
+}
+
+
+#content{
+  overflow: auto;
+}
+.imageslist td{
+  text-align: center;
+}
+
+.imageslist {
+  position: relative;
+  margin: auto;
+  border:1px solid #C0C0C0;
+  border-collapse:collapse;
+  padding:5px;
+  width: 100%;
+  /* height: 10px; */
+  margin-top: 20px;
+}
+.imageslist th {
+  border:1px solid #C0C0C0;
+  background:#F0F0F0;
+  max-width: 50px;
+  text-align: center;
+}
+.imageslist td {
+  border:1px solid #C0C0C0;
+  /* padding:5px; */
+  font-size: 11px;
+}
+
+.selected{
+  background-color: yellow;
+}
+
+
+
+#tablerow:hover{
+  cursor: pointer;
+}
+
+#photos #images{
+  height: 227px;
+  width: 230px;
+  -webkit-transition: 1s;
+}
+
+#progress{
+  margin-top: 5px;
+  margin-left: -1px;
+  width: inherit;
+  height: 5px;
+  border: 1px solid black;
+}
+
+.hidden{
+  height: 0!important;
+  opacity: 0;
+}
+
+#tablerow .miniature{
+  width: 35px;
+  height: 35px;
+}
+
+#tablerow .miniature:hover{
+  cursor:pointer;
+}
+
+
+#upload{
+  position: relative;
+  width: 200px;
+  height: 100px;
+  margin: auto;
+}
+
+#delete{
+  width: 250px;
+}
+
+i{
+  color: red;
+  z-index: 0;
+  transition: 1.3s;
+  cursor: pointer;
+}
+
+#next{
+  position:absolute;
+  top: 125px;
+  left: 90.5%;
+  margin: 0;
+}
+
+
+#prev{
+  position: absolute;
+  top: 125px;
+}
+
+#deleteSelected{
+  position: relative;
+  width: 250px;
+  height: 50px !important;
+  margin: auto;
+  -webkit-transition: 0.5s;
+  top: 15px;
+  font-size: 25px;
+}
+
+#deleteSelected:hover{
+  cursor: pointer;
+}
+
+.bsubmit{
+  width: 200px;
+  position: relative;
+  margin: auto;
+}
+
+#choosefile{
+  width: 200px;
+}
+
+#slidespeed{
+  width:200px;
+}
+
+#speed{
+  position: relative;
+  margin: auto;
+  width:200px;
+  display: none;
+}
+
+#speedvalue{
+  text-align: center;
+}
+
+.bringToFront{
+  z-index: 1000 !important;
+}

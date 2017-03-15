@@ -1,0 +1,164 @@
+
+@@font-face {
+  font-family: Futura;
+  src: url(fonts/futura.ttf);
+}
+
+#todolist{
+  border: 2px solid black;
+  width: 250px;
+  background-color: white;
+  overflow:auto;
+  height:auto;
+  min-height: 440px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 2px solid #666666;
+  position: absolute;
+  resize: vertical;
+}
+
+#notes{
+  height: 330px;
+}
+
+#header{
+  font-size: 10px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  background-color: blue;
+  height: 55px;
+}
+
+#header h1{
+  margin: 0;
+  padding: 14px;
+  width:200px;
+  margin-left: -13px;
+  font-size: 25px;
+}
+
+#header #add{
+  float: right;
+  padding: 21px;
+  font-family: Futura;
+  font-weight: bold;
+
+}
+
+#input{
+  font-size: 24px;
+  border-bottom: 1px solid black;
+  text-align: left;
+  height: 55px;
+
+}
+
+#task{
+  height: 55px;
+  width: 250px;
+  font-size: 15px;
+  border: 1px solid black;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+
+}
+
+#newtask{
+  height: 40px;
+  font-size: 15px;
+  padding-top: 20px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  display: block;
+  text-align: left;
+}
+
+#newtask:hover{
+  background-color: lightgreen;
+}
+
+#notetxt {
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+
+.remove{
+   cursor: pointer;
+   position: relative;
+   width: 20px;
+   height: 20px;
+   text-align: left !important;
+}
+.remove span{
+  display: inline-block;
+width: 24px;
+}
+
+.completed{
+  opacity: 0.5;
+
+}
+.completed span{
+  display: inline-block;
+width: 24px;
+
+text-align: right;
+}
+
+.remove:hover{
+  opacity: 1;
+}
+
+
+
+body{
+  background-color: snow;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  overflow: hidden;
+}
+
+.hidden{
+  visibility: hidden;
+  display: inline-block;
+  width: 24px;
+  text-align: right;
+}
+
+.hiddenDel{
+  visibility: hidden;
+  opacity: 0;
+}
+
+#error{
+  width: 250px;
+  height: 50px;
+  opacity: 1;
+  transition: 0.3s;
+  background-color: red;
+  text-align: center;
+
+}
+
+.crossed{
+  text-decoration: line-through;
+}
+
+.errorhide{
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden;
+  transition: 1s;
+}
+
+#errmsg{
+ font-size: 15px;
+ margin-left: auto;
+ font-family: Verdana;
+ position: relative;
+ margin-top: 10px;
+ display: inline-block;
+}

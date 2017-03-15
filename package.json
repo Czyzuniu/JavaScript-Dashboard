@@ -1,0 +1,22 @@
+{
+  "name": "photoalbum",
+  "version": "1.0.0",
+  "description": "photo album for dashboard",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node API/server",
+    "nodemon": "node_modules/.bin/nodemon -i API/server",
+    "forever": "node_modules/.bin/nodemon -i API/server",
+    "initsql": "mysql -u root -p < examples/sql_init.sql"
+  },
+  "author": "konrad k",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "multer": "^1.2.0",
+    "mysql": "^2.12.0",
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,0 +1,85 @@
+#weathernew{
+  border: 1px solid black;
+  position: relative;
+  float: left;
+  width: 277px;
+  height: 353px;
+  background-color: lightblue;
+  overflow: hidden;
+}
+
+#forecast{
+  width: 385px !important;
+  height: 199px;
+  float: left;
+  border: 1px solid black;
+  margin: 5px;
+  overflow-x: scroll;
+  /* display: inline-block; */
+}
+
+
+
+#current{
+  width: 236px;
+  height: 151px;
+  border: 1px solid black;
+  position: relative;
+  float: left;
+  margin: 5px;
+}
+
+
+#weatherdata{
+  width: inherit;
+  text-align: center;
+  margin: 3px;
+  display: inline-block;
+}
+
+
+#weathernew img {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+
+#weathernew h1{
+  text-align: center;
+  margin:1px;
+}
+
+
+#weathernew div{
+  width: inherit;
+  position: relative;
+  margin:auto;
+  text-align: center;
+}
+
+.text{
+  top: 5px;
+  width: 20px;
+  margin: 0px;
+  display: inline-block;
+  margin-top: -10px;
+  vertical-align: middle;
+  height: 50px;
+}
+
+
+.txt{
+  position: relative;
+  top: -28px;
+}
+
+
+#dayfore{
+  width: 90px !important;
+  height: 197px;
+  border: 1px solid black;
+  float: left;
+  display: inline-block;
+  /* overflow-x: scroll; */
+}

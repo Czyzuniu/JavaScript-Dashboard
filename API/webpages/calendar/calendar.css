@@ -1,0 +1,408 @@
+#calendar{
+  border: 1px solid black;
+  width: 250px;
+  position: absolute;
+  background-color: white;
+  left: 581px;
+  height: auto;
+}
+
+#months{
+  list-style: none;
+  height: 42px;
+  background-color: black;
+  margin-top: -16px;
+}
+
+
+
+#days li:hover{
+  color: blue;
+  cursor: pointer;
+  border-color: black;
+  ed; */
+  font-size: inherit;
+}
+
+#previousM{
+  float: left;
+  font-size: 30px;
+  width: 59px;
+  position: relative;
+  left: 5px;
+  color: white;
+  top: 30px;
+}
+
+
+#currentDate{
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  top: 3px;
+}
+
+.current{
+  border: 2px solid black !important;
+  color: red !important;
+}
+
+
+#nextM{
+  float: right;
+  font-size: 30px;
+  width: 59px;
+  position: relative;
+  left: 40px;
+  color: white;
+  top: 30px;
+}
+
+#months #currentMonth{
+  font-size: 20px;
+  text-align: center;
+  width: 146px;
+  color: white;
+  position: relative;
+  top: 0px;
+  color: white;
+  margin: auto;
+}
+
+
+
+#weekdays {
+  margin: 0;
+  padding: 0px;
+  border-bottom: 1px solid black;
+  height: 20px;
+  width: inherit;
+}
+
+#weekdays li {
+    display: inline-block;
+    width: 31px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+#previousM{
+    float: left;
+    margin-left: 5px;
+    font-size: 19px;
+    width: 59px;
+    position: relative;
+    left: 5px;
+    color: white;
+    top: 11px;
+}
+
+#today{
+    height: 25px;
+    border-top: solid black 1px;
+    position: relative;
+    top: 15px;
+}
+
+#currentDate{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.current{
+    border: 2px solid black !important;
+    color: red !important;
+}
+
+
+#nextM{
+    float: right;
+    margin-left:;
+    margin-left: 2p;
+    font-size: 19px;
+    width: 59px;
+    position: relative;
+    left: 40px;
+    color: white;
+    top: 11px;
+}
+
+
+#year{
+    text-align: center;
+    margin: 0;
+    left: 110px;
+    position: relative;
+    top: 0px;
+    color: white;
+    font-size: 14px;
+}
+
+
+#days {
+    padding: 0;
+    height: inherit;
+    width: inherit;
+}
+
+#days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 24.5px;
+  text-align: center;
+  margin-bottom: 6px;
+  margin-left: 10px;
+  margin-right: 0px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+#events{
+  /* height: auto; */
+  border: 1px solid black;
+  /* transition: 0.5s; */
+  min-height: 20px;
+  max-height: 400px;
+  width: 300px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#events h1{
+  text-align: center;
+  font-size: 12px;
+}
+
+#event{
+  list-style: none;
+    position: relative;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+#eventoption{
+  height: 27px;
+  border-bottom: 1px solid black;
+  width: auto;
+}
+
+.eventsbutton{
+  display: inline;
+  list-style-type: none;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 45px;
+    width: inherit;
+}
+
+.eventsbutton {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 4px 16px;
+    text-decoration: none;
+    width: 117px;
+}
+
+.eventsbutton:hover{
+  background-color: red;
+  cursor: pointer;
+}
+
+#todayE{
+  border-right: 2px solid black;
+}
+
+.ev{
+  max-height: 311px;
+  min-height: 95px;
+  height: 98px;
+  overflow: auto;
+  height: auto;
+}
+
+.active{
+  background-color: blue;
+}
+
+
+
+#events section p{
+  /* text-align: center; */
+  margin: 6px;
+  font-size: 12px;
+  position: relative;
+  /* top: -40px; */
+  /* width: 200px; */
+  left: 14px;
+  float: left;
+}
+
+#events section{
+  /* border-bottom: 1px solid black; */
+  height: 100px;
+  background-color: lightskyblue;
+  color: black;
+  width: auto;
+  border: 1px solid black;
+}
+
+#events h1{
+  text-align: center;
+  font-size: 18px;
+  margin: 0px;
+  font-family: Helvetica;
+  font-weight: bold;
+  position: relative;
+  /* top: -51px; */
+  left: 30px;
+  width: 150px;
+  float: left;
+}
+
+#eventday{
+    border: 2px solid black;
+    width: 55px;
+    height: 60px;
+    border-radius: 5px;
+    position: relative;
+    left: 5px;
+    top: 15px;
+    float: left;
+    background-color: lightblue;
+    margin: 3px;
+}
+
+#eventday .weekday{
+  height: 10px;
+  border-bottom: 1px solid black;
+  font-size: 10px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+
+#eventday .day{
+  height: 27px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding-top: 10px;
+  background-color: whitesmoke;
+}
+
+#eventday .month{
+  height: 11px;
+  font-size: 10px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.hasEvent{
+  background-color: lightblue;
+}
+
+
+#hideEvents{
+  text-align: center;
+  /* height: 35px; */
+  /* top: 13px; */
+  position: relative;
+}
+
+#createEvent{
+  position: relative;
+  top: 150px;
+  left: -87px;
+  height: 50px;
+  display: inline-block;
+  /* padding: 50px; */
+  border: none;
+}
+
+#addEvents{
+  position: absolute;
+  height: 400px;
+  width: 350px;
+  z-index: 1;
+  background-color: lightblue;
+  border-radius: 23px;
+  left: -400px;
+  top: 50px;
+  transition: 1s;
+}
+
+#exit{
+  color: black;
+  position: relative;
+  left: -8px;
+}
+
+
+#filler{
+  width: 120px;
+  display: inline-block;
+  float: left;
+  margin-top: 35px;
+  margin-left: 21px;
+  }
+
+  .aCLASS{
+    display: inline-block;
+    float: left;
+    margin-top: 24px;
+    height: 35px;
+  }
+
+#remove{
+  float: left;
+  left: 81px;
+  top: -50px;
+  position: relative;
+  cursor: pointer;
+}
+
+#droptarget{
+  height: 500px;
+  width: 400px;
+  position: absolute;
+}
+
+#drophere{
+  height: 1080px;
+}
+
+.allowdrop{
+  z-index: 999;
+}
+
+
+#eventdesc{
+  float: left;
+  width: 150px !important;
+}
+
+
+.hiddenevent{
+  height: 0 !important;
+  min-height: 0;
+  max-height: 0;
+}
+
+
+#addEvents input{
+  border-radius: 5px;
+}

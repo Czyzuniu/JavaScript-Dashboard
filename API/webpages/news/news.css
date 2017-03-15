@@ -1,0 +1,53 @@
+#news{
+  height: 294px;
+  position:absolute;
+  width: 230px;
+  background-color: black;
+  color: white;
+  overflow: hidden;
+  left: 645px;
+  top: 412px;
+  resize: both;
+}
+
+#news section img{
+  width: 220px;
+  height: 116px;
+  margin: 5px;
+}
+
+#news section {
+  position: relative;
+  height: 270px;
+  width: 230px;
+  transition: 2s;
+  left: 0px;
+}
+
+#news section p {
+  font-size: 15px;
+  width: 200px;
+  margin: 5px;
+}
+
+#news section p:hover{
+  cursor: pointer;
+}
+
+#news section h1 {
+  font-size: 18px;
+  /* text-align: center; */
+  margin: 4px;
+  width: 221px;
+  font-family: Helvetica;
+}
+
+
+.slide{
+  position: relative;
+  transition: ease-in;
+  visibility: hidden;
+  height: 0 !important;
+  opacity: 0;
+  left: -200px;
+}
