@@ -1,6 +1,6 @@
 #clock{
-  width: 250px;
-  height: 150px;
+  width: auto;
+  height: auto;
   border: 1px solid black;
   margin: 10px;
   border-radius: 5px;
@@ -11,21 +11,29 @@
   z-index: 0;
   left: 275px;
   position: absolute;
-}
-#time{
-width: inherit;
-display: inline-block;
-text-align: center;
-margin-top: 10%;
-font-size: 47px;
+  display: flex;
+  justify-content: center;
+  flex-direction:column;
+  min-width: 150px;
+  min-height: 136px;
+  max-width: 550px;
+  max-height: 450px;
 }
 
+#time{
+text-align: center;
+display: inline-flex;
+justify-content: center;
+}
 
 #csettings{
-  position: relative;
-  float: right;
+
   color: black;
   z-index: 2;
+  position: absolute;
+  right: 0;
+  top: 0;
+  flex-grow: 3;
 }
 
 #sett {
@@ -33,7 +41,6 @@ font-size: 47px;
   width: inherit;
   height: inherit;
   background-color: red;
-  /* opacity: 1; */
   display:inline-flex;
   transition: 0.5s;
 }
@@ -67,8 +74,6 @@ font-size: 47px;
 }
 
 .unit{
-  margin-left: -20px;
-  margin-right: -16px;
 }
 
 .blink{
@@ -77,5 +82,9 @@ font-size: 47px;
 
 .ampm{
   font-size: 12px !important;
-  margin-left: auto;
+  top: 0;
+}
+
+.material-icons{
+  font-size:initial !important;
 }

@@ -7,13 +7,16 @@
   overflow: hidden;
   left: 645px;
   top: 412px;
-  resize: both;
 }
 
 #news section img{
   width: 220px;
   height: 116px;
   margin: 5px;
+}
+
+#news:nth-of-type(2) {
+    flex-grow: 3;
 }
 
 #news section {

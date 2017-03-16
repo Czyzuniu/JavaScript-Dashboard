@@ -1,5 +1,4 @@
 
-
 function loadWeather(town){
   var weatherurl = 'http://api.apixu.com/v1/forecast.json?key=2e167e86455f442997e161402172602&q=' + town + '&days=5';
   var xhr = new XMLHttpRequest();
@@ -108,30 +107,13 @@ function createWeather(data){
   //  elem.appendChild(data);
 
   });
-
+  size('weather');
 }
 
 var locat = localStorage.getItem('loc');
 if(locat == null){
   loadWeather('Portsmouth');
-}else {
+}
+else {
   loadWeather(locat);
-}
-
-var resizer = document.createElement('div');
-resizer.className = 'resizer';
-resizer.addEventListener('mousedown', startResize, false);
-window.weather.appendChild(resizer);
-
-function startResize(e) {
-   window.addEventListener('mousemove', Resize, false);
-   window.addEventListener('mouseup', stopResize, false);
-}
-function Resize(e) {
-   window.weather.style.width = (e.clientX - window.weather.offsetLeft) + 'px';
-   window.weather.style.height = (e.clientY - window.weather.offsetTop) + 'px';
-}
-function stopResize(e) {
-    window.removeEventListener('mousemove', Resize, false);
-    window.removeEventListener('mouseup', stopResize, false);
 }

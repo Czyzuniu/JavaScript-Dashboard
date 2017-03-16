@@ -11,6 +11,8 @@ function loadPositions(){
       else {
         i.style.left = retrevied.startingLeft + 'px';
         i.style.top = retrevied.startingTop + 'px';
+        i.style.height = retrevied.startingH + 'px';
+        i.style.width = retrevied.startingW + 'px';
         if(retrevied.hidden == true){
           document.getElementById(i.id).classList.add('hidden');
           createMiniature(retrevied);
@@ -27,7 +29,7 @@ function loadPositions(){
             front[i].classList.remove('bringToFront');
           }
 
-          
+
           target = target.parentNode;
           target.classList.add('bringToFront');
 
@@ -49,6 +51,8 @@ function loadDefaultStorage(){
       id:i.id,
       startingLeft:i.style.left,
       startingTop: i.style.top,
+      startingH: i.style.height,
+      startingW: i.style.width,
       hidden:false
     };
 

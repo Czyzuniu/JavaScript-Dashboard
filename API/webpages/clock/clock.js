@@ -65,6 +65,7 @@ function getSettings(){
   xhr.onload = function() {
       if (xhr.status === 200) {
           loadSettings(JSON.parse(xhr.responseText));
+          size('clock');
       } else {
       //    console.error('error getting pictures', xhr);
         }

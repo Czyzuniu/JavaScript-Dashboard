@@ -49,12 +49,18 @@ var top;
 
     window.comptab.style.border = '1px dashed green';
 
-    var object = {
-      id:id,
-      startingLeft:l,
-      startingTop:t,
-      hidden:false
-    };
+    var data = document.getElementById(id);
+    var rect = data.getBoundingClientRect();
+
+
+      var object = {
+        id:id,
+        startingLeft:l,
+        startingTop:t,
+        startingH:rect.height,
+        startingW:rect.width,
+        hidden:false
+      };
 
     localStorage.setItem(id, JSON.stringify(object));
       //console.log(event.target.id);
@@ -87,11 +93,14 @@ var top;
   //var data = document.querySelectorAll('[data-id]');
 
   var data = document.getElementById(id);
+  var rect = data.getBoundingClientRect();
 
   var object = {
     id:id,
     startingLeft:startingLeft,
     startingTop:startingTop,
+    startingH:rect.height,
+    startingW:rect.width,
     hidden:true
   };
 
