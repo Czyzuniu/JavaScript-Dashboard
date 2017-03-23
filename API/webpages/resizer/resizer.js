@@ -1,3 +1,5 @@
+
+
 var elements = document.getElementsByClassName('canDrag');
 
 function getClientRect(id){
@@ -6,6 +8,7 @@ function getClientRect(id){
 }
 
 function makeResizable(element){
+
   function initResize(e) {
      window.addEventListener('mousemove', resize, false);
      window.addEventListener('mouseup', stopResize, false);
@@ -20,7 +23,6 @@ function makeResizable(element){
        retrieved.startingH = getClientRect(element.id).height;
        retrieved.startingW = getClientRect(element.id).width;
        localStorage.setItem(element.id,JSON.stringify(retrieved));
-       console.log(retrieved);
     }
 
     function stopResize(e) {
@@ -30,16 +32,12 @@ function makeResizable(element){
     }
 
     var resizer = document.createElement('div');
-    resizer.classList.add('resizer');
+    resizer.className = 'resizer';
     resizer.addEventListener('mousedown', initResize, false);
     element.appendChild(resizer);
 }
 
-for(var i of elements){
-  var id = document.getElementById(i.id);
-  makeResizable(id);
 
-}
 
 
 function size(id){
@@ -49,7 +47,7 @@ function size(id){
 
   if(id == 'clock'){
     for(var a of children){
-      a.style.fontSize = rectObject.width * 0.3;
+      a.style.fontSize = rectObject.width * 0.2;
     }
   }
   if(id == 'weather'){
@@ -60,7 +58,23 @@ function size(id){
       a.style.fontSize = rectObject.width * 0.0900;
     }
 
-    console.log(elements);
+  }
+
+  if(id == 'news'){
+    var imgs = window.news.querySelectorAll('img');
+
+    for(var i of imgs){
+        //i.style.height = rectObject.width  * 0.2 + 'px';
+    }
   }
 
 }
+
+
+
+window.addEventListener('load',function(){
+    for(var i of elements){
+      var id = document.getElementById(i.id);
+      makeResizable(id);
+    }
+  });

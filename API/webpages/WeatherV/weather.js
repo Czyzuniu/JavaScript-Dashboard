@@ -1,6 +1,6 @@
 
 function loadWeather(town){
-  var weatherurl = 'http://api.apixu.com/v1/forecast.json?key=2e167e86455f442997e161402172602&q=' + town + '&days=5';
+  //var weatherurl = 'http://api.apixu.com/v1/forecast.json?key=2e167e86455f442997e161402172602&q=' + town + '&days=5';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', weatherurl, true);
   xhr.onload = function() {
