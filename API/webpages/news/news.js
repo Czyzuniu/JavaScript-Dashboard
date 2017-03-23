@@ -1,5 +1,7 @@
 window.addEventListener('load', function(){
-  getNews([0,1,2]);
+  var arr = JSON.parse(localStorage.getItem('newsCategories'));
+  getNews(arr);
+
 });
 
 
@@ -163,9 +165,6 @@ function appendNews(arr, appender, cl){
 
     elem = document.createElement('h1');
     elem.textContent = news.title;
-    elem.onclick = function(){
-      window.location = news.url;
-    }
     container.appendChild(elem);
 
     elem = document.createElement('p');
@@ -224,13 +223,20 @@ function createSettingsPage(){
       var categories = document.createElement('div');
       categories.className = 'cat';
       categories.id = 'categories';
+
+
+      var txt = document.createElement('p');
+      txt.textContent = "Please choose your " + 1 + " news category and specify the slide time";
+      settings.appendChild(txt);
+
+
       settings.appendChild(categories);
 
 
 
-    createCategories(elem);
+    createCategories(elem,txt);
   elem.addEventListener('change', function(){
-    createCategories(elem);
+    createCategories(elem,txt);
   });
 
 
@@ -262,26 +268,15 @@ function getCategoriesName(source){
   }
 }
 
-function createCategories(elem){
-
-  var txt = document.createElement('p');
-  txt.textContent = "Please choose your " + 1 + " news category";
-  categories.appendChild(txt);
+function createCategories(elem,txt){
 
   var categ = elem.value < 2 ? "category" : "categories";
-  txt.textContent = "Please choose your " + elem.value + " news " + categ;
+  txt.textContent = "Please choose your " + elem.value + " news " + categ + " and specify the slide time";
   categories.innerHTML = '';
 
 
 
-    var errorLabel = document.createElement('p');
-    errorLabel.textContent = 'Please enter a time value between 8 and 60';
-    errorLabel.style.position = 'absolute';
-    errorLabel.style.fontSize = '13' + 'px';
-    errorLabel.style.color = 'red';
-    errorLabel.style.left = '34' + '%';
-    errorLabel.classList.toggle('hidden');
-    categories.appendChild(errorLabel);
+
 
   for(var i = 0; i < elem.value; i++){
 
@@ -308,7 +303,6 @@ function createCategories(elem){
 
 
 
-
     frm.appendChild(speed);
     for(var a of names){
       var opt = document.createElement('option');
@@ -328,7 +322,14 @@ function createCategories(elem){
   submit.value = "Apply changes";
   submit.id = 'submit';
   submit.onclick = changeNews;
+  var errorLabel = document.createElement('p');
+  errorLabel.textContent = 'Please enter a time value between 8 and 60';
+  errorLabel.style.fontSize = '13' + 'px';
+  errorLabel.style.color = 'red';
+  errorLabel.classList.toggle('hidden');
+
   applyForm.appendChild(submit);
+  applyForm.appendChild(errorLabel);
   categories.appendChild(applyForm);
 }
 
@@ -348,13 +349,13 @@ function changeNews(){
     var times = [];
     for(var t of time){
       times.push(t.value);
-
       setTimeout(function(){
-        console.log('ssss');
         slideNews('.' + classes[count],times[count]);
         count++;
       },1000);
     }
   }
+
+  localStorage.setItem('newsCategories', JSON.stringify(arr));
 
 }

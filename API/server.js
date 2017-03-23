@@ -234,7 +234,7 @@ function createEvent(req,res){
     var object = req.body;
 
 
-    sql.query(sql.format('INSERT INTO CALENDAR SET ?', object), function(err,result){
+    sql.query(sql.format('INSERT INTO calendar SET ?', object), function(err,result){
       if (err) return error(res,'failed sql insert', err);
      })
 }
@@ -294,7 +294,7 @@ function sendEvents(req,res){
 
   var events = [];
   // prepare query
-  var query = 'SELECT * FROM CALENDAR';
+  var query = 'SELECT * FROM calendar';
 
   //console.log(req.query.month);
   //console.log(req.query.nextMonth);

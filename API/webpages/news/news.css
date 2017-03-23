@@ -9,10 +9,10 @@
   top: 412px;
   display: flex;
   flex-direction: row;
-  max-height: 360px;
-  max-width: 1200px;
-  min-height: 335px;
-  min-width: 305px;
+  max-height: 386px;
+  max-width: 914px;
+  min-height: 382px;
+  min-width: 359px;
   flex-flow: row-wrap;
   flex-wrap: wrap;
 }
@@ -109,7 +109,7 @@
 
 
 #newsSettings h1{
-  font-size: 35px;
+  font-size: 28px;
   color: black;
   text-align: center;
 }
@@ -127,10 +127,9 @@
 
 
 #newsSettings p{
-  font-size: 15px;
+  font-size: 13px;
   color: black;
   text-align: center;
-
 }
 
 select{
@@ -142,7 +141,7 @@ select{
   height: 155px;
   margin-left: 9px;
   border: 1px solid black;
-  margin-top: 15px;
+  /* margin-top: 55px; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

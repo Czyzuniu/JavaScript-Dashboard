@@ -7,7 +7,7 @@
     "start": "node API/server",
     "nodemon": "node_modules/.bin/nodemon -i API/server",
     "forever": "node_modules/.bin/nodemon -i API/server",
-    "initsql": "mysql -u root -p < examples/sql_init.sql"
+    "initsql": "mysql -u root -p < API/sql_init.sql"
   },
   "author": "konrad k",
   "license": "ISC",

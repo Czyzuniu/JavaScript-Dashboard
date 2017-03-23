@@ -51,7 +51,7 @@ function addEvent(){
 
   if(error == false){
     console.log(newEvent);
-    var url = '/api/calendar';
+    var url = 'api/calendar';
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");

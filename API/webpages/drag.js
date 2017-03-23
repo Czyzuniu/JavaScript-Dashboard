@@ -1,5 +1,6 @@
 var drags = document.querySelectorAll('.canDrag');
 var tab = [];
+var customizeMode;
 //console.log(drags);
 var border;
 var draggedItem;
@@ -8,6 +9,8 @@ var offsetY;
 var id;
 var left;
 var top;
+
+
 
 /* Draggable event handlers */
     function dragStart(event) {
@@ -132,7 +135,6 @@ function createMiniature(object){
   elem.classList.add('miniature');
   elem.src = object.id + '.png';
   elem.dataset.id = object.id;
-  console.log(object.id);
   elem.addEventListener('click', function(){
       var index = tab.indexOf(object);
       console.log(index);
@@ -150,6 +152,45 @@ function createMiniature(object){
   });
   window.comptab.appendChild(elem);
 
+}
+
+
+function toggleMode(){
+  customizeMode = true;
+  var icon = window.readOnly.querySelector('i');
+
+
+  icon.addEventListener('click', function(){
+
+      for(var i of resizers){
+        i.classList.add('hidden');
+      }
+
+      customizeMode = customizeMode == true ? false : true;
+      icon.classList.toggle('fa-toggle-on');
+      icon.classList.toggle('fa-toggle-off');
+      window.comptab.classList.toggle('slide');
+      if(customizeMode){
+        for(var i of drags){
+          i.draggable = true;
+          for(var i of resizers){
+            i.classList.remove('hidden');
+          }
+        }
+      }else {
+        for(var i of drags){
+          i.draggable = false;
+          for(var i of resizers){
+            i.classList.add('hidden');
+          }
+        }
+      }
+
+  });
 
 
 }
+
+
+
+toggleMode();

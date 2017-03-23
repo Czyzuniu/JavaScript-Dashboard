@@ -1,5 +1,5 @@
 
-
+var resizers = []
 var elements = document.getElementsByClassName('canDrag');
 
 function getClientRect(id){
@@ -34,6 +34,7 @@ function makeResizable(element){
     var resizer = document.createElement('div');
     resizer.className = 'resizer';
     resizer.addEventListener('mousedown', initResize, false);
+    resizers.push(resizer);
     element.appendChild(resizer);
 }
 

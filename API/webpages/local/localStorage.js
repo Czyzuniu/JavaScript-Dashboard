@@ -60,3 +60,19 @@ function loadDefaultStorage(){
   }
 
 }
+
+
+function loadNews(){
+
+  var ret = localStorage.getItem('newsCategories');
+  console.log(ret);
+  var arr = [0,1,5];
+  if(ret == null){
+    localStorage.setItem('newsCategories', JSON.stringify(arr));
+  }
+
+
+}
+
+
+loadNews();

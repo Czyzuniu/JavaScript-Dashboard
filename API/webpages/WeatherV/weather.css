@@ -133,5 +133,5 @@
   bottom:0;
   cursor:se-resize;
   position: absolute;
-  z-index: 5;
+  z-index: 9;
 }
