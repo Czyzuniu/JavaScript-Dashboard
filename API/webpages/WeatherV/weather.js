@@ -1,6 +1,6 @@
 
 function loadWeather(town){
-  //var weatherurl = 'http://api.apixu.com/v1/forecast.json?key=2e167e86455f442997e161402172602&q=' + town + '&days=5';
+  var weatherurl = 'http://api.apixu.com/v1/forecast.json?key=2e167e86455f442997e161402172602&q=' + town + '&days=5';
   var xhr = new XMLHttpRequest();
   xhr.open('GET', weatherurl, true);
   xhr.onload = function() {
@@ -49,26 +49,36 @@ function createWeather(data){
 
   dat = document.createElement('p');
   dat.textContent = data.location.name + ',' + data.location.country;
-  dat.onclick = function(e){
-    e.target.classList.add('behind');
+
+
+  var icon = document.createElement('i');
+  icon.className = 'fa fa-location-arrow';
+  icon.style.fontSize = 25 + 'px';
+  icon.style.width =  100 + '%';
+
+  icon.onclick = function(e){
+    dat.classList.add('behind');
     window.weatherLoc.classList.remove('behind');
   };
+  dat.appendChild(icon);
   elem.appendChild(dat);
 
   dat = document.createElement('input');
   dat.placeholder = 'enter city name';
   dat.type = 'text';
   dat.id = 'weatherLoc';
-  dat.addEventListener('blur', function(){
+  dat.addEventListener('blur', function(e){
     var town = window.weathersearch.children[1].textContent;
     if(dat.value.length > 0){
       town.textContent = dat.value;
       loadWeather(dat.value);
       localStorage.setItem('loc', dat.value);
     }else {
-
+      dat.classList.add('behind');
     }
   });
+
+
   dat.classList.add('behind');
   elem.appendChild(dat);
 

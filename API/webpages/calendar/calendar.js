@@ -6,6 +6,21 @@ window.previousM.addEventListener('click', updateMonth);
 window.addEventListener('load', showTodayEvents);
 window.createEvent.addEventListener('click', addEvent);
 window.exit.addEventListener('click', closeEventAdd);
+window.addEventListener('load', function(){
+  var inputs = window.addEvents.querySelectorAll('input');
+  var create = window.createEvent;
+  for(var i of inputs){
+    i.addEventListener('input', function(){
+      if(this.value == 0){
+        this.style.backgroundColor = 'red';
+        create.disabled = true;
+      }else {
+        this.style.backgroundColor = null
+        create.disabled = false;
+      }
+    });
+  }
+});
 
 
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -21,7 +36,7 @@ var firstDay;
 function closeEventAdd(){
   window.addEvents.classList.add('hidden');
   if(selectedDay){
-    selectedDay.style.backgroundColor = ' inherit';
+    selectedDay.style.backgroundColor = 'inherit';
   }
 }
 
@@ -37,15 +52,6 @@ function addEvent(){
     eventStart:window.eventFrom.value,
     eventFinish:window.eventTo.value
   };
-
-  if(newEvent.eventName.length <= 0 || newEvent.eventDesc.length <= 0 || newEvent.eventOn.length <= 0
-     || newEvent.eventStart.length <= 0 || newEvent.eventFinish.length <= 0){
-       error = true;
-       console.log('err');
-     }else {
-       error = false;
-     }
-
 
 
 
@@ -67,10 +73,7 @@ var selectedDay;
 
 function openEventAdd(e){
 
-  if(selectedDay){
-    selectedDay.style.backgroundColor = ' inherit';
-  }
-  e.target.style.backgroundColor = 'red';
+
   window.addEvents.classList.remove('hidden');
 
     selectedDay = e.target;
@@ -88,23 +91,6 @@ function openEventAdd(e){
 
 }
 
-function linkDaysWithEvents(e){
-  var events = window.eventday;
-
-  for(var i = 0; i < events.length; i++){
-    if(e.target.textContent == events[i].children[1].textContent &&
-    currentM.textContent == events[i].children[2].textContent){
-    var ev = events[i].parentNode;
-    //console.log(ev);
-    ev.style.backgroundColor = 'blue';
-      setTimeout(removeHighlight, 500);
-    }
-  }
-
-  function removeHighlight(e){
-    ev.style.backgroundColor = '';
-  }
-}
 
 function hideShowEvents(){
   window.events.classList.toggle('hidden');
@@ -119,12 +105,13 @@ function hideShowEvents(){
 function loadEvents(){
   var selectedMonth = months.indexOf(currentM.textContent);
   var nextMonth = selectedMonth + 1;
-  var url = 'api/calendar?month=' + selectedMonth + '&nextMonth=' + nextMonth;
+  var url = '/api/calendar?month=' + selectedMonth + '&nextMonth=' + nextMonth;
   ///api/notes/update?noteID=' + note.dataset.id +'&noteCompleted=' + completed;
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onload = function() {
       if (xhr.status === 200) {
+
           createEvents(JSON.parse(xhr.responseText));
       } else {
           console.error('error getting pictures', xhr);
@@ -207,7 +194,7 @@ function createEvents(events){
     elem.textContent = eventtime;
     container.appendChild(elem);
 
-    elem = document.createElement('span');
+    elem = document.createElement('p');
     elem.dataset.id = ev.id;
     elem.textContent = 'x';
     elem.id = 'remove';
@@ -223,7 +210,6 @@ function createEvents(events){
     for(var i = 0; i < alldays.length; i++){
       if(alldays[i].textContent == day[2] && currentM.textContent == months[mth[1] - 1] && year == day[0]){
         alldays[i].classList.add('hasEvent');
-        alldays[i].addEventListener('click', linkDaysWithEvents);
       }
     }
 
@@ -238,6 +224,10 @@ function createEvents(events){
   });
 
     if(upcomingEvents.textContent == ''){
+      upcomingEvents.textContent = 'no events scheduled yet';
+    }
+
+    if(todaysEvents.textContent == ''){
       upcomingEvents.textContent = 'no events scheduled yet';
     }
 

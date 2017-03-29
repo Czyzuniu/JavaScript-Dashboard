@@ -6,6 +6,16 @@ create table if not exists dashboard.photos (
   title varchar(10)
 )charset 'utf8mb4';
 
+create table if not exists dashboard.background (
+  id int primary key auto_increment,
+  filename varchar(60)
+)charset 'utf8mb4';
+
+create table if not exists dashboard.alarm (
+  id int primary key auto_increment,
+  alarmTime time,
+  title varchar(50)
+)charset 'utf8mb4';
 
 create table if not exists dashboard.todolist (
   id int primary key auto_increment,
@@ -43,6 +53,8 @@ create table if not exists dashboard.calendar (
     eventStart varchar(8),
     eventFinish varchar(8)
 )charset 'utf8mb4';
+
+
 
 
 

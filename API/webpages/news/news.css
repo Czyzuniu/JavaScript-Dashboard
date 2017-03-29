@@ -1,12 +1,8 @@
 #news{
-  height: 294px;
   position: absolute;
-  width: 230px;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   overflow: hidden;
-  left: 645px;
-  top: 412px;
   display: flex;
   flex-direction: row;
   max-height: 386px;
@@ -15,6 +11,12 @@
   min-width: 359px;
   flex-flow: row-wrap;
   flex-wrap: wrap;
+  border: 2px solid grey;
+  border-radius: 10px;
+  left: 891px;
+    top: 234px;
+    height: 433px;
+    width: 501px;
 }
 
 #news section img{
@@ -172,7 +174,7 @@ select{
   text-align: center;
   font-size: 12px;
   font-weight: bold;
-  border: 1px solid;
+  /* border: 1px solid; */
   text-align: center;
-  color: powderblue;
+  color: black;
 }

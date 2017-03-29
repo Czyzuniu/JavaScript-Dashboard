@@ -15,7 +15,6 @@ var counter = 0;
 var selectedItems = [];
 var img;
 var loadwidth = 0;
-var timer;
 var canvas = window.progress.getContext("2d");
 var timer;
 
@@ -116,7 +115,7 @@ function putPicturesInPage(pics) {
         });
         img = document.querySelectorAll("#images");
         changeImage();
-        startLoading();
+        startLoading(10);
         addListeners();
 
     } else {
@@ -127,7 +126,7 @@ function putPicturesInPage(pics) {
 }
 
 
-function startLoading() {
+function startLoading(speed) {
     canvas.fillStyle = "gray";
     canvas.fill();
 
@@ -145,7 +144,8 @@ function startLoading() {
             resetLoadingBar();
         }
     }
-    setInterval(draw, 15);
+    timer = window.setInterval(draw, speed * 3.5);
+
 
 }
 
@@ -193,6 +193,21 @@ function addListeners() {
         tablerow[i].addEventListener('click', setSelected);
     }
     var add = window.add;
+
+    var apply = window.apply;
+
+    apply.addEventListener('click', function(){
+        var time = window.settings.querySelector('input[type=number]');
+        if(time.value > 3){
+          console.log(time.value);
+          clearInterval(timer);
+          changeImage();
+          startLoading(time.value);
+          resetLoadingBar();
+          window.settings.classList.toggle('settings-hid');
+          window.bsettings.textContent = "Open settings";
+        }
+    });
 }
 
 function deleteSelectedPhotos() {
@@ -253,6 +268,3 @@ function prevPhoto(){
   img[counter].classList.toggle('hidden');
   resetLoadingBar();
 }
-
-
-setInterval(checkSelected, 100);

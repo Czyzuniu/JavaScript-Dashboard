@@ -1,10 +1,12 @@
 var widgets = document.querySelectorAll('.canDrag');
-
+//var chosenProfile = JSON.parse(localStorage.getItem('selectedProfile'));
 
 function loadPositions(){
     var id;
+
     for(var i of widgets){
       var retrevied = JSON.parse(localStorage.getItem(i.id));
+    //  console.log(retrevied);
       if(retrevied == null){
         loadDefaultStorage();
       }
@@ -15,6 +17,7 @@ function loadPositions(){
         i.style.width = retrevied.startingW + 'px';
         if(retrevied.hidden == true){
           document.getElementById(i.id).classList.add('hidden');
+          tab.push(retrevied);
           createMiniature(retrevied);
         }else {
           document.getElementById(i.id).classList.remove('hidden');
@@ -45,6 +48,8 @@ loadPositions();
 
 
 function loadDefaultStorage(){
+
+
   for(var i of widgets){
 
     var object = {
@@ -53,19 +58,28 @@ function loadDefaultStorage(){
       startingTop: i.style.top,
       startingH: i.style.height,
       startingW: i.style.width,
-      hidden:false
+      hidden:check(i)
     };
 
     localStorage.setItem(i.id, JSON.stringify(object));
   }
 
+
+
+
+  //localStorage.setItem(selectedProfile, JSON.stringify(profile));
+
+  function check(i){
+    if(i.id ==  'photoAlbum' || i.id ==  'events' || i.id == 'calendar'){
+      return true;
+    }
+  }
 }
 
 
 function loadNews(){
 
   var ret = localStorage.getItem('newsCategories');
-  console.log(ret);
   var arr = [0,1,5];
   if(ret == null){
     localStorage.setItem('newsCategories', JSON.stringify(arr));

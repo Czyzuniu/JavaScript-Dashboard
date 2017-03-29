@@ -1,6 +1,14 @@
 var drags = document.querySelectorAll('.canDrag');
 var tab = [];
-var customizeMode;
+
+
+  var customizeMode = JSON.parse(localStorage.getItem('configurable'));
+
+  if(customizeMode == null){
+    customizeMode = true;
+    localStorage.getItem('configurable', JSON.stringify(customizeMode));
+  }
+
 //console.log(drags);
 var border;
 var draggedItem;
@@ -9,26 +17,34 @@ var offsetY;
 var id;
 var left;
 var top;
-
+var resizers = [];
 
 
 /* Draggable event handlers */
     function dragStart(event) {
       var style = window.getComputedStyle(event.target, null);
+
       id = event.target.id;
-      event.target.classList = '';
       event.dataTransfer.setData('id', id);
       event.dataTransfer.setData('left',(parseInt(style.getPropertyValue("left"),10)));
       event.dataTransfer.setData('top',(parseInt(style.getPropertyValue("top"),10)));
 
       draggedItem = event.target;
+
+      draggedItem.style.border = '2px dashed grey'
+      draggedItem.classList.remove('bringToFront');
+      //console.log(draggedItem);
       offsetX = (parseInt(style.getPropertyValue("left"),10) - event.clientX);
       offsetY = (parseInt(style.getPropertyValue("top"),10) - event.clientY);
+      //  console.log(draggedItem);
     }
 
 
     function dragEnd(event) {
       window.comptab.style.border = 'none';
+      draggedItem.style.border = null;
+
+      //shake(drags);
     }
 
   /* Drop target event handlers */
@@ -38,9 +54,6 @@ var top;
 
 
   function dragOver(event) {
-
-
-      //var test = event.target;
 
     var l = draggedItem.style.left = (event.clientX + parseInt(offsetX));
 
@@ -54,6 +67,8 @@ var top;
 
     var data = document.getElementById(id);
     var rect = data.getBoundingClientRect();
+
+    bounds(draggedItem);
 
 
       var object = {
@@ -75,11 +90,9 @@ var top;
   }
 
   function dragOverTaskbar(event){
-    //window.comptab.textContent = 'pin to taskbar';
   }
 
   function dragLeave(event) {
-    event.preventDefault();
   }
 
 
@@ -92,7 +105,7 @@ var top;
   var id = event.dataTransfer.getData('id');
   var startingLeft = event.dataTransfer.getData('left');
   var startingTop = event.dataTransfer.getData('top');
-  console.log(startingLeft + ',' + startingTop);
+  //console.log(startingLeft + ',' + startingTop);
   //var data = document.querySelectorAll('[data-id]');
 
   var data = document.getElementById(id);
@@ -114,7 +127,6 @@ var top;
       createMiniature(object);
 
 
-  console.log(tab);
 
 
   }
@@ -132,65 +144,132 @@ var top;
 
 function createMiniature(object){
   var elem = document.createElement('img');
+  var comp = document.getElementById(object.id);
   elem.classList.add('miniature');
-  elem.src = object.id + '.png';
+  elem.src = 'icons/'+ object.id + '.png';
+  elem.style.cursor = 'pointer';
   elem.dataset.id = object.id;
   elem.addEventListener('click', function(){
       var index = tab.indexOf(object);
-      console.log(index);
       var main = tab[index];
-      var comp = document.getElementById(object.id);
-      console.log(comp);
+    //  console.log(comp);
       comp.classList.toggle('hidden');
       comp.style.left = object.startingLeft;
       comp.style.top = object.startingTop;
       tab.splice(index,1);
       object.hidden = false;
       localStorage.setItem(object.id, JSON.stringify(object));
-      console.log(localStorage.getItem(object.id));
+      //console.log(localStorage.getItem(object.id));
       window.comptab.removeChild(elem);
   });
+
+
+
+
   window.comptab.appendChild(elem);
 
 }
 
+var icon = window.readOnly.querySelector('i');
+
+
 
 function toggleMode(){
-  customizeMode = true;
-  var icon = window.readOnly.querySelector('i');
 
+  if(customizeMode){
+    icon.className = 'fa fa-toggle-on';
 
-  icon.addEventListener('click', function(){
+  }
+  else {
+    icon.className = 'fa fa-toggle-off';
+  }
 
-      for(var i of resizers){
-        i.classList.add('hidden');
-      }
-
-      customizeMode = customizeMode == true ? false : true;
-      icon.classList.toggle('fa-toggle-on');
-      icon.classList.toggle('fa-toggle-off');
-      window.comptab.classList.toggle('slide');
-      if(customizeMode){
-        for(var i of drags){
-          i.draggable = true;
-          for(var i of resizers){
-            i.classList.remove('hidden');
-          }
-        }
-      }else {
-        for(var i of drags){
-          i.draggable = false;
-          for(var i of resizers){
-            i.classList.add('hidden');
-          }
-        }
-      }
-
-  });
+  setTimeout(toggleCustomization, 200);
 
 
 }
 
 
+window.addEventListener('load', function(){
 
-toggleMode();
+    resizers = document.getElementsByClassName('resizer');
+  toggleMode();
+    icon.addEventListener('click', function(){
+      customizeMode = customizeMode == true ? false : true;
+      console.log(customizeMode);
+      localStorage.setItem('configurable', JSON.stringify(customizeMode));
+      toggleMode();
+
+    });
+});
+
+function toggleCustomization(){
+
+  var array = document.querySelectorAll('#csettings,#bsettings,#add, #settingsButton , .fa-location-arrow, #weatherLoc, #cog');
+  if(customizeMode){
+      window.body.classList.add('selectedBorder');
+    for(var i of drags){
+      i.draggable = true;
+      i.classList.add('on');
+//
+    }
+    for(var x of resizers){
+      x.classList.remove('slide');
+    }
+    for(var y of array){
+      y.classList.remove('slide');
+
+    }
+    window.comptab.classList.remove('slide');
+
+  }
+  else{
+      window.body.classList.remove('selectedBorder');
+    for(var i of drags){
+      i.draggable = false;
+      i.classList.remove('on');
+    }
+    for(var x of resizers){
+      x.classList.add('slide');
+    }
+    for(var y of array){
+      y.classList.add('slide');
+      console.log(y);
+    }
+    window.comptab.classList.add('slide');
+  }
+}
+
+
+function bounds(elem){
+  var data = document.getElementById(elem.id);
+  var rect = data.getBoundingClientRect();
+
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+
+  if(rect.left < 0){
+    elem.style.left = 0 + 10;
+  }
+
+  if(rect.right > width){
+    elem.style.left = width - (rect.width + 10);
+  }
+
+  if(rect.top < 0){
+    elem.style.top = 0 + 10;
+  }
+
+  if(rect.bottom > height){
+    elem.style.top = height - (rect.height + 10);
+  }
+}
+
+
+
+window.addEventListener('load', function(){
+  for(var i of drags){
+    bounds(i);
+  }
+});

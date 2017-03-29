@@ -1,11 +1,11 @@
 #weather{
   margin:10px;
-  width: 254px;
-  height: auto;
   border: 4px solid white;
   position: absolute;
-  left: 281px;
-  top: 176px;
+  left: 411px;
+  top: 236px;
+  height: 410px;
+  width: 296px;
   display: flex;
   flex-flow: column;
   max-width: 500px;
@@ -81,7 +81,7 @@
 }
 
 #weathertemp{
-  height: 33%;
+  height: 30%;
   /* border-bottom: 1px solid black; */
   text-align: center;
   margin: 0;
@@ -109,14 +109,21 @@
 #weathersearch #weatherLoc{
   z-index: 1;
   position: relative;
-  top: -20px;
+  top: -23px;
   width: 100%;
+  height: 20px;
+  font-size: smaller;
+  font-family: inherit;
 }
 
 #weathersearch{
-  height: 33%;
-      padding-top: 11%;
-      vertical-align: middle;
+  height: 39%;
+  padding-top: 9%;
+  vertical-align: middle;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 

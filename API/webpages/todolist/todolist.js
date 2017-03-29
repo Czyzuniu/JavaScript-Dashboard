@@ -1,5 +1,4 @@
 window.addEventListener('load', loadNotes);
-window.addEventListener('click', deleteNote);
 window.input.addEventListener('input', isError);
 window.addEventListener('load', isError);
 
@@ -64,28 +63,6 @@ function createListeners(){
 }
 
 function loadNotes() {
-    /*
-    var left = 0;
-    var top = 450;
-    for(var i = 0; i < 3; i++){
-      var drop = document.createElement('div');
-      drop.id = 'droptarget';
-      drop.style.left = left;
-      left += 500;
-      window.drops.insertBefore(drop,window.drops.firstChild);
-    }
-    left = 0;
-    for(var a = 0; a < 3; a++){
-
-      var drop = document.createElement('div');
-      drop.id = 'droptarget';
-      drop.style.left = left;
-      drop.style.top = top;
-      window.drops.appendChild(drop);
-      left += 500;
-    }
-
-    */
     var url = '/api/notes';
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -103,8 +80,7 @@ function loadNotes() {
 function deleteNote(e) {
 
 
-  if(e.target.classList[0] == 'remove'){
-    var id = e.target.dataset.id;
+        var id = e.target.dataset.id;
         var xhr = new XMLHttpRequest();
         xhr.open('delete', '/api/notes/' + id , true);
         xhr.onload = function() {
@@ -117,11 +93,11 @@ function deleteNote(e) {
             }
         }
         xhr.send();
-  }
+
 }
 
 function updateNote(e){
-  if(e.target.id == 'newtask' && e.target.tagName == 'LI'){
+
     var note = e.target;
 
     var completed;
@@ -136,7 +112,6 @@ function updateNote(e){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url, true);
     xhr.send();
-  }
 
 }
 
@@ -187,6 +162,10 @@ function createNotes(notes){
     span.dataset.id = note.id;
     var txt = document.createTextNode("\u00D7");
     span.classList.add('remove');
+
+    span.onclick = function(e){
+      deleteNote(e);
+    };
     if(note.completed == 0){
       span.classList.add('hidden');
     }

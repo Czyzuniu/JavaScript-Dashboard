@@ -5,13 +5,24 @@
   background-color: white;
   left: 581px;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 253px;
+  max-height: 244px;
+  min-width: 253px;
+  min-height: 244px;
 }
 
 #months{
   list-style: none;
-  height: 42px;
+  height: 40px;
+  padding: 0;
   background-color: black;
-  margin-top: -16px;
+  /* margin-top: -16px; */
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+  /* flex-wrap: wrap; */
 }
 
 
@@ -25,13 +36,6 @@
 }
 
 #previousM{
-  float: left;
-  font-size: 30px;
-  width: 59px;
-  position: relative;
-  left: 5px;
-  color: white;
-  top: 30px;
 }
 
 
@@ -50,22 +54,22 @@
 
 
 #nextM{
-  float: right;
+  /* float: right; */
   font-size: 30px;
-  width: 59px;
-  position: relative;
-  left: 40px;
+  /* width: 59px; */
+  /* position: relative; */
+  /* left: 40px; */
   color: white;
-  top: 30px;
+  /* top: 30px; */
 }
 
 #months #currentMonth{
-  font-size: 20px;
+  font-size: 21px;
   text-align: center;
   width: 146px;
   color: white;
-  position: relative;
-  top: 0px;
+  /* position: relative; */
+  /* top: 0px; */
   color: white;
   margin: auto;
 }
@@ -78,6 +82,8 @@
   border-bottom: 1px solid black;
   height: 20px;
   width: inherit;
+  max-width: 253px;
+  min-width: 253px;
 }
 
 #weekdays li {
@@ -90,13 +96,13 @@
 
 #previousM{
     float: left;
-    margin-left: 5px;
+    margin: auto;
     font-size: 19px;
     width: 59px;
     position: relative;
-    left: 5px;
+    left: 0;
     color: white;
-    top: 11px;
+    top: 14px;
 }
 
 #today{
@@ -120,25 +126,25 @@
 
 #nextM{
     float: right;
-    margin-left:;
-    margin-left: 2p;
+    margin: auto;
     font-size: 19px;
-    width: 59px;
+    /* width: 59px; */
     position: relative;
-    left: 40px;
+    /* left: 40px; */
     color: white;
-    top: 11px;
+    top: -52px;
 }
 
 
 #year{
     text-align: center;
-    margin: 0;
-    left: 110px;
+    /* margin: 0; */
+    /* left: 110px; */
     position: relative;
-    top: 0px;
+    top: -13px;
     color: white;
-    font-size: 14px;
+    font-size: 12px;
+    /* display: inline-block; */
 }
 
 
@@ -146,6 +152,11 @@
     padding: 0;
     height: inherit;
     width: inherit;
+    margin: 0;
+    max-width: 253px;
+    max-height: 244px;
+    min-width: 253px;
+    min-height: 244px;
 }
 
 #days li {
@@ -166,13 +177,17 @@
   /* height: auto; */
   border: 1px solid black;
   /* transition: 0.5s; */
-  min-height: 20px;
-  max-height: 400px;
+  min-height: 215px;
+  max-height: 645px;
+  min-width: 339px;
+  max-width: 800px;
   width: 300px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   left: 0;
   top: 0;
+  background: white;
 }
 
 #events h1{
@@ -189,33 +204,48 @@
 }
 
 #eventoption{
-  height: 27px;
+  height: 50px;
   border-bottom: 1px solid black;
-  width: auto;
+  /* width: auto; */
+  /* display: flex; */
+  flex-direction: row;
+  /* flex-wrap: wrap; */
 }
 
 .eventsbutton{
-  display: inline;
+  display: inline-flex;
   list-style-type: none;
 }
 
 
-ul {
+#events ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    height: 45px;
-    width: inherit;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#days ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .eventsbutton {
-    float: left;
-    display: block;
-    text-align: center;
-    padding: 4px 16px;
+    /* float: left; */
+    /* display: block; */
+    /* text-align: center; */
+    /* padding: 4px 16px; */
     text-decoration: none;
-    width: 117px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    /* position: relative; */
+    /* top: 50%; */
 }
 
 .eventsbutton:hover{
@@ -228,9 +258,9 @@ ul {
 }
 
 .ev{
-  max-height: 311px;
-  min-height: 95px;
-  height: 98px;
+  /* max-height: 311px; */
+  /* min-height: 95px; */
+  /* height: 98px; */
   overflow: auto;
   height: auto;
 }
@@ -243,48 +273,59 @@ ul {
 
 #events section p{
   /* text-align: center; */
-  margin: 6px;
+  /* margin: 6px; */
   font-size: 12px;
   position: relative;
-  /* top: -40px; */
-  /* width: 200px; */
-  left: 14px;
-  float: left;
+  top: -79px;
+  width: 100%;
+  /* left: 14px; */
+  /* float: left; */
+  /* width: auto; */
+  text-align: center;
 }
 
 #events section{
   /* border-bottom: 1px solid black; */
-  height: 100px;
+  max-height: 100%;
   background-color: lightskyblue;
   color: black;
-  width: auto;
+  width: 100%;
   border: 1px solid black;
+  display: inline-flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  height: 164px;
 }
 
 #events h1{
   text-align: center;
   font-size: 18px;
-  margin: 0px;
+  /* height: 10%; */
+  /* margin: 0px; */
   font-family: Helvetica;
   font-weight: bold;
   position: relative;
-  /* top: -51px; */
-  left: 30px;
-  width: 150px;
-  float: left;
+  top: -69px;
+  /* left: 30px; */
+  width: 100%;
+  /* float: left; */
+  /* height: 5px; */
 }
 
 #eventday{
     border: 2px solid black;
-    width: 55px;
+    width: 66px;
     height: 60px;
     border-radius: 5px;
     position: relative;
-    left: 5px;
-    top: 15px;
-    float: left;
+    left: 20px;
+    top: 25px;
+    /* float: left; */
     background-color: lightblue;
     margin: 3px;
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 #eventday .weekday{
@@ -327,10 +368,10 @@ ul {
   position: relative;
   top: 150px;
   left: -87px;
-  height: 50px;
+  height: 30px;
   display: inline-block;
   /* padding: 50px; */
-  border: none;
+  /* border: none; */
 }
 
 #addEvents{
@@ -364,15 +405,25 @@ ul {
     display: inline-block;
     float: left;
     margin-top: 24px;
-    height: 35px;
+    height: 41px;
   }
 
 #remove{
-  float: left;
-  left: 81px;
-  top: -50px;
-  position: relative;
+  /* float: left; */
+  /* left: 97%; */
+  ht: 0;
+  /* bottom: 0; */
   cursor: pointer;
+  /* width: 10px; */
+  /* height: 17px; */
+  position: relative;
+  /* top: -60px; */
+  font-size: 20px;
+  color: red;
+  display: inline-flex;
+  /* text-align: center; */
+  /* display: inline-block; */
+  justify-content: center;
 }
 
 #droptarget{
@@ -391,8 +442,8 @@ ul {
 
 
 #eventdesc{
-  float: left;
-  width: 150px !important;
+  /* float: left; */
+  /* width: 150px !important; */
 }
 
 
@@ -405,4 +456,10 @@ ul {
 
 #addEvents input{
   border-radius: 5px;
+  color: black;
+}
+
+
+#calendar form{
+  margin: 0;
 }

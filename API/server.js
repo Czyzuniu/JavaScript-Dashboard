@@ -59,7 +59,10 @@ app.post('/api/clock', updateSettings);
 app.get('/api/calendar', sendEvents);
 app.post('/api/calendar', createEvent);
 app.delete('/api/calendar/:id', deleteEve);
-app.get('/api/weather', sendWeather);
+app.delete('/api/clockAlarm', deleteAlarm);
+app.post('/api/clockAlarm', createAlarm);
+app.get('/api/clockAlarm', sendAlarms);
+app.post('/api/background', uploader.single('picfile'), uploadBackground);
 // static files
 app.use('/', express.static(webpages, { extensions: ['html'] }));
 
@@ -182,13 +185,32 @@ function deleteEve(req,res){
     sql.query(sql.format('DELETE FROM calendar WHERE id=?', [req.params.id]), function(err,result){
       if (err) return error(res, 'failed sql delete', err);
       res.sendStatus(200);
-
     });
   });
 }
 
+function uploadBackground(req,res){
+
+  console.log(req.file);
+
+  var fileExt = req.file.mimetype.split('/')[1] || 'png';
+  var newFilename = req.file.filename + '.' + fileExt;
+  fs.rename(req.file.path, localimg + newFilename, function (err) {
+    if (err) return error(res, 'failed to move incoming file', err);
+
+    // now add the file to the DB
+    var dbRecord = {
+      filename: newFilename
+    };
+
+    sql.query(sql.format('INSERT INTO background SET ?', dbRecord), function (err, result) {
+      if (err) return error(res, 'failed sql insert', err);
+    });
+  });
+}
 
 function uploadPicture(req, res) {
+
   // move the file where we want it
   var fileExt = req.file.mimetype.split('/')[1] || 'png';
   var newFilename = req.file.filename + '.' + fileExt;
@@ -334,11 +356,53 @@ function sendEvents(req,res){
 }
 
 
-function sendWeather(req,res){
 
-}
 
 function error(res, msg, error) {
   res.sendStatus(500);
   console.error(msg, error);
+}
+
+function createAlarm(req,res){
+
+  var time = req.query.time;
+  var title = req.query.title;
+
+  var obj = {
+    id:0,
+    alarmTime:time,
+    title:title
+  };
+
+  sql.query(sql.format('INSERT INTO alarm SET ?', obj), function (err, result) {
+    if (err) return error(res, 'failed sql insert', err);
+  });
+
+}
+
+function sendAlarms(req,res){
+  var query = 'SELECT * FROM alarm';
+  var alarms = [];
+  sql.query(query, function (err, data) {
+    if (err) return error(res, 'failed to run the query', err);
+
+    data.forEach(function (row) {
+      alarms.push({
+        id: row.id,
+        time: row.alarmTime,
+        title:row.title
+      });
+    });
+
+    res.json(alarms);
+  });
+}
+
+
+function deleteAlarm(req,res){
+  var query = 'DELETE FROM alarm WHERE id=' + req.query.id;
+
+  sql.query(query, function (err, data) {
+    if (err) return error(res, 'failed to run the query', err);
+  });
 }

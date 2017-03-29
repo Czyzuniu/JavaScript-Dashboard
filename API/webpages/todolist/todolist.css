@@ -6,20 +6,33 @@
 
 #todolist{
   border: 2px solid black;
-  width: 250px;
   background-color: white;
   overflow:auto;
   height:auto;
-  min-height: 440px;
+  min-height: 200px;
   margin: 10px;
   border-radius: 5px;
   border: 2px solid #666666;
   position: absolute;
-  resize: vertical;
+  /* resize: vertical; */
+  display: flex;
+  flex-direction: column;
+  min-height: 163px;
+  max-height: 700px;
+  min-width: 250px;
+  max-width: 750px;
+  left: 51px;
+    top: 196px;
+    height: 422px;
+    width: 195px;
 }
 
 #notes{
-  height: 330px;
+  height: 100%;
+  /* display: inline-flex; */
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
 }
 
 #header{
@@ -31,11 +44,15 @@
 }
 
 #header h1{
-  margin: 0;
-  padding: 14px;
-  width:200px;
-  margin-left: -13px;
+  /* margin: 0; */
+  /* padding: 14px; */
+  /* width:200px; */
+  /* margin-left: -13px; */
   font-size: 25px;
+  display: flex;
+  justify-content: center;
+  /* position: relative; */
+  /* top: 13px; */
 }
 
 #header #add{
@@ -55,22 +72,30 @@
 }
 
 #task{
-  height: 55px;
-  width: 250px;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  display: flex;
   font-size: 15px;
   border: 1px solid black;
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-
 }
 
 #newtask{
-  height: 40px;
+  height: 50px;
+  display: inherit;
   font-size: 15px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   border-bottom: 1px solid black;
   text-align: center;
-  display: block;
-  text-align: left;
+  /* display: block; */
+  /* text-align: left; */
+  /* justify-content: center; */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 3;
 }
 
 #newtask:hover{
@@ -78,10 +103,14 @@
 }
 
 #notetxt {
-  width: 200px;
+  width: 80%;
   display: inline-block;
   text-align: center;
   font-size: 18px;
+  height: 25px;
+  position: relative;
+  /* justify-content: center; */
+  top: 36%;
 }
 
 
@@ -100,13 +129,14 @@ width: 24px;
 
 .completed{
   opacity: 0.5;
-
 }
 .completed span{
-  display: inline-block;
-width: 24px;
-
-text-align: right;
+  display: inline-flex;
+  width: 24px;
+  text-align: right;
+  height: 25px;
+  position: relative;
+  top: 40%;
 }
 
 .remove:hover{
@@ -161,4 +191,8 @@ body{
  position: relative;
  margin-top: 10px;
  display: inline-block;
+}
+
+#notes #newtask:nth-of-type(1) {
+    flex-grow: 3;
 }

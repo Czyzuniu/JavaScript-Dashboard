@@ -1,0 +1,85 @@
+#setup{
+  width: 100%;
+  height: 100%;
+  /* border: 20px solid white; */
+  position: absolute;
+  z-index: 20;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+
+#cog i{
+  font-size: 55px !important;
+  color: black;
+}
+
+
+#cog{
+  position: fixed;
+  width: auto;
+  height: auto;
+}
+
+
+#cog i:hover{
+  color: red;
+  cursor: pointer;
+  transition: 0s;
+}
+
+#setup div{
+  border: 1px solid black;
+  height: 200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+#setup input[type='color']{
+  width: 70px;
+  margin: auto;
+}
+
+#setup input[type='submit']{
+  width: auto;
+  height: 85px;
+  margin: auto;
+}
+
+
+
+#setup form{
+  display: flex;
+  margin: auto;
+  width: 200px;
+  flex-wrap: wrap;
+}
+
+#setup input[type='file']{
+  margin: auto;
+  padding: 25px;
+}
+
+
+#setup form input{
+  margin:10px;
+  width: 100%;
+  font-size: 12px;
+}
+
+#setup form select{
+  width: 100%;
+}
+
+
+.colorblind{
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter:invert(100%) !important;
+
+}

@@ -1,11 +1,20 @@
 window.addEventListener('load', getSettings);
+window.addEventListener('load', function(){
+    //createAlarmPage(); alarm is disabled
+    //loadAlarms();
+});
 window.csettings.addEventListener('click', showSettings);
 window.cformat.addEventListener('click', toggle);
-setInterval(getTime, 500);
+setInterval(getTime, 1000);
 
 var on = window.cformat;
 var classList = on.classList;
 var is24;
+var alarms = [];
+var currentTime;
+
+var alarmOn = false;
+
 
 
 function getTime(){
@@ -49,6 +58,11 @@ function getTime(){
   time.children[3].textContent = ext;
   time.children[1].classList.toggle('blink');
 
+  var h = time.children[0].textContent;
+  var m = time.children[2].textContent;
+
+
+
 
 
 }
@@ -71,6 +85,8 @@ function getSettings(){
         }
       }
         xhr.send();
+
+
 }
 
 function loadSettings(settings){
@@ -105,5 +121,151 @@ function toggle(){
   var url = '/api/clock?format=' + val;
   var xhr = new XMLHttpRequest();
   xhr.open('POST', url, true);
+  xhr.send();
+}
+
+function createAlarmPage(){
+  var alarmI= window.alarmIcon;
+  alarmI.addEventListener('click', function(){
+      window.alarm.classList.toggle('slide');
+      window.csettings.classList.toggle('hidden');
+
+  });
+
+      var alarm = window.alarm;
+      alarm.innerHTML = '';
+
+      var div1 = document.createElement('div');
+      div1.id = 'panel';
+
+      var time = document.createElement('input');
+      time.type = 'time';
+      div1.appendChild(time);
+
+      var title = document.createElement('input');
+      title.type = 'text';
+      title.value = 'title';
+      div1.appendChild(title);
+
+      elem = document.createElement('input');
+      elem.type = 'button'
+      elem.value = 'set alarm!';
+
+      elem.addEventListener('click', function(){
+        var xhr = new XMLHttpRequest();
+        var url = '/api/clockAlarm?time=' + time.value + '&title=' + title.value;
+
+        xhr.open('POST',url, true); // synchronous request
+        xhr.send();
+        loadAlarms();
+      });
+      div1.appendChild(elem);
+
+      alarm.appendChild(div1);
+
+      var div2 = document.createElement('div');
+      div2.id = 'panel';
+
+      alarm.appendChild(div2);
+}
+
+function loadAlarms(){
+  var url = '/api/clockAlarm';
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.onload = function() {
+      if (xhr.status === 200) {
+          createAlarms(JSON.parse(xhr.responseText));
+      } else {
+          console.error('error getting pictures', xhr);
+      }
+  }
+  xhr.send();
+}
+
+function createAlarms(data){
+  var main = window.panel[1];
+  main.innerHTML = '';
+  data.forEach(function(alrm){
+    var container = document.createElement('section');
+
+    var elem = document.createElement('div');
+    elem.classList.add('alarmDiv');
+
+    var text = document.createElement('h1');
+    text.textContent = alrm.title;
+    elem.appendChild(text);
+
+
+    var clockDiv = document.createElement('div');
+    clockDiv.id = 'clockImage';
+
+    var img = document.createElement('img');
+    img.src = 'clock.png';
+
+    clockDiv.appendChild(img);
+    elem.appendChild(clockDiv);
+
+    var text = document.createElement('p');
+    var time = alrm.time.split(':');
+    text.textContent = time[0] + ':' + time[1];
+    var obj = {
+      time:(time[0] + ':' + time[1]),
+      title:alrm.title
+    };
+
+    alarms.push(obj);
+    elem.appendChild(text);
+
+    text = document.createElement('p');
+    text.textContent = 'X';
+    text.id = 'remove';
+    text.dataset.id = alrm.id;
+    text.onclick = function(e){
+      deleteAlarm(e);
+      loadAlarms();
+    }
+    elem.appendChild(text);
+
+    container.appendChild(elem);
+    main.appendChild(container);
+
+  });
+}
+
+function checkIfAlarm(){
+  var question;
+  var title;
+  console.log(alarmOn);
+  for(var i of alarms){
+    if(i.time == currentTime){
+      title = i.title;
+      alarmOn = true;
+    }
+  }
+
+  if(alarmOn){
+    audio.play();
+    window.alarmOff.classList.remove('slide');
+  }
+
+
+
+}
+
+window.alarmOff.addEventListener('click', function(){
+    alarmOn = true;
+    audio.pause();
+    window.alarmOff.classList.add('slide');
+    setTimeout(function(){
+        alarmOn = false;
+    },60000)
+});
+
+function deleteAlarm(e){
+  var id = e.target.dataset.id;
+  var url = '/api/clockAlarm?id=' + id;
+  var xhr = new XMLHttpRequest();
+  xhr.open('DELETE', url, true);
   xhr.send();
 }

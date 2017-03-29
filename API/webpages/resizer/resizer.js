@@ -1,5 +1,4 @@
 
-var resizers = []
 var elements = document.getElementsByClassName('canDrag');
 
 function getClientRect(id){
@@ -34,7 +33,6 @@ function makeResizable(element){
     var resizer = document.createElement('div');
     resizer.className = 'resizer';
     resizer.addEventListener('mousedown', initResize, false);
-    resizers.push(resizer);
     element.appendChild(resizer);
 }
 
@@ -44,7 +42,7 @@ function makeResizable(element){
 function size(id){
   var elem = document.getElementById(id);
   rectObject = elem.getBoundingClientRect();
-  var children = elem.children;
+  var children = window.time.children;
 
   if(id == 'clock'){
     for(var a of children){
@@ -56,7 +54,7 @@ function size(id){
     var img = window.weathericon.children[0];
 
     for(var a of elements){
-      a.style.fontSize = rectObject.width * 0.0900;
+      a.style.fontSize = rectObject.width * 0.0800;
     }
 
   }

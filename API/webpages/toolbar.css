@@ -18,6 +18,7 @@
   width: 100px;
   display: inline-block;
   margin-left: 20px;
+  border-radius: 23px;
 }
 
 
@@ -26,7 +27,7 @@
   height: 100px;
   position: fixed;
   right: 15;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -46,4 +47,45 @@
   font-size: 43px;
   /* text-align: center; */
   color: black;
+}
+
+.shake {
+  animation: shake 0.62s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 100% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+
+.selectedBorder{
+  border: 2px dashed !important;
+  /* padding: 15px; */
+  border-image-source: url('icons/ants2.gif') !important;
+  border-image-repeat: repeat repeat !important;
+  border-image-slice: 1 !important;
+}
+
+
+
+.on:hover{
+  cursor: move;
+  box-shadow: 5px 5px 5px #888888;
 }

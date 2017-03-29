@@ -93,7 +93,7 @@ function createNews(data){
         var elem = document.createElement('img');
         elem.src = news.urlToImage;
         elem.onerror = function(){
-          this.src = 'noimage.png';
+          this.src = 'icons/noimage.png';
         }
         elem.draggable = false;
         container.appendChild(elem);
