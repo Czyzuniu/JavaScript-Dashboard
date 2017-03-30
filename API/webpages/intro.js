@@ -44,7 +44,7 @@ window.addEventListener('load', function(){
             'left mouse button and moving your mouse! ',content);
 
 
-    writeInfo('upon hovering over any of your widgets you will see an icon' +
+    writeInfo('upon hovering over any of your widgets your mouse cursor will look' +
     ' like this one below.',content);
 
 
@@ -54,7 +54,7 @@ window.addEventListener('load', function(){
     content.appendChild(icon);
 
 
-    writeInfo('Move this widget around, to progress to the next step', content);
+    writeInfo('Move your weather widget around, to progress to the next step', content);
 
     stepElement.appendChild(content);
 
@@ -143,18 +143,24 @@ function nextStep(step){
 
       break;
 
+
     case 9: ninethStep();
+      break;
+
+
+    case 10: tenthStep();
 
       break;
 
-    case 10: finish();
 
+    case 11: finish();
+      break;
     default:
 
   }
 }
 
-function ninethStep(){
+function tenthStep(){
   disableNextStep('nextStepButton');
   var header = window.headerStep;
   var content =  window.contentStep;
@@ -181,7 +187,7 @@ function ninethStep(){
 
 
   stepTimer = setInterval(function(){
-    if(stepCount == 3){
+    if(stepCount == 5){
       clearInterval(stepTimer);
       enableNextStep('nextStepButton');
     }
@@ -434,4 +440,17 @@ function finish(){
   window.step.classList.toggle('hidden');
   window.location.reload();
   clearInterval(timer);
+}
+
+function ninethStep(){
+  var header = window.headerStep;
+  var content =  window.contentStep;
+  header.innerHTML = '';
+  content.innerHTML = '';
+  window.readOnly.classList.toggle('onstep');
+
+  createHeader("Customizable mode");
+  writeInfo("You can switch between customzable or read only mode", content);
+  writeInfo("In the top right corner there is a switch", content);
+  writeInfo("Enable it if you wish to customize your dashboard!", content);
 }
