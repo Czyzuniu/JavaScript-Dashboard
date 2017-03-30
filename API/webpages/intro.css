@@ -1,0 +1,64 @@
+
+
+#step h1{
+  font-size: 20px;
+  margin: 5px;
+  font-family: Helvetica;
+}
+
+
+#step {
+    position: absolute;
+    width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    left: 973px;
+    top: 138px;
+    background-color: snow;
+}
+
+#step p{
+  margin: 4px;
+  height: 60px;
+}
+
+
+#step img{
+  width: 25px;
+  height: 25px;
+  position: relative;
+  left: 46%;
+  top: -14px;
+}
+
+
+#step #inputs{
+  position: absolute;
+    bottom: -25px;
+    width: 100%;
+}
+
+#step i{
+  text-align: center;
+    width: 100%;
+    font-size: 26px;
+}
+
+#step input{
+  width: 50%;
+}
+
+#step #bigger{
+  height: 91px;
+  position: relative;
+  width: 146px;
+  left: 103px;
+  top: -4px;
+}
+
+#contentStep{
+  display: flex;
+  flex-direction: column;
+}

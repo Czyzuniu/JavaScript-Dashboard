@@ -381,8 +381,8 @@
   z-index: 1;
   background-color: lightblue;
   border-radius: 23px;
-  left: -400px;
-  top: 50px;
+  left: -360px;
+  top: -100px;
   transition: 1s;
 }
 

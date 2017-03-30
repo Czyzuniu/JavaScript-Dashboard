@@ -1,6 +1,6 @@
 var drags = document.querySelectorAll('.canDrag');
 var tab = [];
-
+var stepCount = 0;
 
   var customizeMode = JSON.parse(localStorage.getItem('configurable'));
 
@@ -149,6 +149,7 @@ function createMiniature(object){
   elem.src = 'icons/'+ object.id + '.png';
   elem.style.cursor = 'pointer';
   elem.dataset.id = object.id;
+  stepCount++;
   elem.addEventListener('click', function(){
       var index = tab.indexOf(object);
       var main = tab[index];
@@ -161,6 +162,7 @@ function createMiniature(object){
       localStorage.setItem(object.id, JSON.stringify(object));
       //console.log(localStorage.getItem(object.id));
       window.comptab.removeChild(elem);
+      stepCount++;
   });
 
 

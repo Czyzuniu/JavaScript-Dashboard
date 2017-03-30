@@ -31,6 +31,12 @@
   transition: 0s;
 }
 
+
+.blurred > *:not(.onstep):not(#step) {
+  filter:blur(20px);
+}
+
+
 #setup div{
   border: 1px solid black;
   height: 200px;

@@ -4,7 +4,12 @@ var set = window.setup;
 
 
 window.addEventListener('load', function(){
-  window.body.style.backgroundColor = JSON.parse(localStorage.getItem('background'));
+  var bg = JSON.parse(localStorage.getItem('background'));
+  if(bg == null){
+    bg = 'rgb(102, 204, 255)';
+  }
+  window.body.style.backgroundColor = bg;
+  localStorage.setItem('background', JSON.stringify(bg));
 });
 
 
@@ -29,7 +34,7 @@ function createSetupPage(){
 
   var container = document.createElement('div');
   var elem = document.createElement('p');
-  elem.textContent = 'Change background-color or set an image';
+  elem.textContent = 'Change background-color';
   container.appendChild(elem);
 
   elem  = document.createElement('input');
@@ -42,30 +47,6 @@ function createSetupPage(){
   container.appendChild(elem);
 
 
-
-  elem = document.createElement('form');
-  var upload = document.createElement('input');
-  upload.type = 'file';
-  upload.accept = 'image/*';
-  elem.appendChild(upload);
-  elem.action = '/api/background';
-  elem.method = 'post';
-  elem.enctype = 'multipart/form-data';
-
-  var input  = document.createElement('input');
-  input.type = 'submit';
-  input.value = 'upload and set the image!';
-
-  var colorblin = document.createElement('input');
-  colorblin.type = 'button';
-  colorblin.value = 'sdsds';
-  colorblin.addEventListener('click', function(){
-    body.classList.toggle('colorblind');
-  });
-
-
-  elem.appendChild(input);
-  elem.appendChild(colorblin);
 
   container.appendChild(elem);
 
