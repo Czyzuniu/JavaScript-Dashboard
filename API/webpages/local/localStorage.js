@@ -1,12 +1,11 @@
 var widgets = document.querySelectorAll('.canDrag');
-//var chosenProfile = JSON.parse(localStorage.getItem('selectedProfile'));
+
 
 function loadPositions(){
     var id;
 
     for(var i of widgets){
       var retrevied = JSON.parse(localStorage.getItem(i.id));
-    //  console.log(retrevied);
       if(retrevied == null){
         loadDefaultStorage();
       }
@@ -25,7 +24,6 @@ function loadPositions(){
       }
       i.addEventListener('click', function(e){
         var target = e.target;
-        //console.log(id);
         while(target.parentNode.id != 'body'){
           var front = document.querySelectorAll('.bringToFront');
           for(var i = 0; i < front.length; i++){
@@ -64,10 +62,6 @@ function loadDefaultStorage(){
     localStorage.setItem(i.id, JSON.stringify(object));
   }
 
-
-
-
-  //localStorage.setItem(selectedProfile, JSON.stringify(profile));
 
   function check(i){
     if(i.id ==  'photoAlbum' || i.id ==  'events' || i.id == 'calendar'){

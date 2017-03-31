@@ -1,4 +1,6 @@
 
+
+
 var elements = document.getElementsByClassName('canDrag');
 
 function getClientRect(id){
@@ -59,13 +61,6 @@ function size(id){
 
   }
 
-  if(id == 'news'){
-    var imgs = window.news.querySelectorAll('img');
-
-    for(var i of imgs){
-        //i.style.height = rectObject.width  * 0.2 + 'px';
-    }
-  }
 
 }
 

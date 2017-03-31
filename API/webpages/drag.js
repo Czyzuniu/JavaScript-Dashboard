@@ -1,3 +1,5 @@
+
+
 var drags = document.querySelectorAll('.canDrag');
 var tab = [];
 var stepCount = 0;
@@ -9,7 +11,6 @@ var stepCount = 0;
     localStorage.getItem('configurable', JSON.stringify(customizeMode));
   }
 
-//console.log(drags);
 var border;
 var draggedItem;
 var offsetX;
@@ -33,10 +34,10 @@ var resizers = [];
 
       draggedItem.style.border = '2px dashed grey'
       draggedItem.classList.remove('bringToFront');
-      //console.log(draggedItem);
+
       offsetX = (parseInt(style.getPropertyValue("left"),10) - event.clientX);
       offsetY = (parseInt(style.getPropertyValue("top"),10) - event.clientY);
-      //  console.log(draggedItem);
+
     }
 
 
@@ -44,7 +45,7 @@ var resizers = [];
       window.comptab.style.border = 'none';
       draggedItem.style.border = null;
 
-      //shake(drags);
+
     }
 
   /* Drop target event handlers */
@@ -81,7 +82,7 @@ var resizers = [];
       };
 
     localStorage.setItem(id, JSON.stringify(object));
-      //console.log(event.target.id);
+
 
 
       event.preventDefault();
@@ -105,8 +106,6 @@ var resizers = [];
   var id = event.dataTransfer.getData('id');
   var startingLeft = event.dataTransfer.getData('left');
   var startingTop = event.dataTransfer.getData('top');
-  //console.log(startingLeft + ',' + startingTop);
-  //var data = document.querySelectorAll('[data-id]');
 
   var data = document.getElementById(id);
   var rect = data.getBoundingClientRect();
@@ -153,14 +152,12 @@ function createMiniature(object){
   elem.addEventListener('click', function(){
       var index = tab.indexOf(object);
       var main = tab[index];
-    //  console.log(comp);
       comp.classList.toggle('hidden');
       comp.style.left = object.startingLeft;
       comp.style.top = object.startingTop;
       tab.splice(index,1);
       object.hidden = false;
       localStorage.setItem(object.id, JSON.stringify(object));
-      //console.log(localStorage.getItem(object.id));
       window.comptab.removeChild(elem);
       stepCount++;
   });

@@ -1,3 +1,5 @@
+
+
 window.addEventListener('load', updateCurrentMonth);
 window.todayE.addEventListener('click', showTodayEvents);
 window.upcomingE.addEventListener('click', showUpcomingEvents);
@@ -106,7 +108,6 @@ function loadEvents(){
   var selectedMonth = months.indexOf(currentM.textContent);
   var nextMonth = selectedMonth + 1;
   var url = '/api/calendar?month=' + selectedMonth + '&nextMonth=' + nextMonth;
-  ///api/notes/update?noteID=' + note.dataset.id +'&noteCompleted=' + completed;
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onload = function() {
@@ -114,8 +115,7 @@ function loadEvents(){
 
           createEvents(JSON.parse(xhr.responseText));
       } else {
-          console.error('error getting pictures', xhr);
-          //window.main.innerHTML = 'sorry, something went wrong...';
+          console.error('error adding event', xhr);
       }
   }
   xhr.send();
@@ -135,10 +135,6 @@ function createEvents(events){
     var isThismonth = false;
 
     var my_date = new Date(getWeekday);
-    //console.log(my_date.getDay());
-    //var elem = document.createElement('p')
-    //elem.textContent = months[date.getMonth()];
-    //container.appendChild(elem);
 
 
     var eventDiv = document.createElement('div');
@@ -277,7 +273,6 @@ function updateDays() {
 
 
     window.year.textContent = year;
-    //  todaysDate();
 }
 
 

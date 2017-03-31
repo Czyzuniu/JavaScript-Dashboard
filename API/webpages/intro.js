@@ -1,3 +1,5 @@
+
+
 var steps = [2,3,4,5];
 var currentStep = 1;
 var stepCompleted = false;
@@ -431,6 +433,7 @@ function disableNextStep(id){
 
 function finish(){
   localStorage.setItem('firstTime', JSON.stringify(true));
+
   var items = document.querySelectorAll('.onstep');
   for(var i of items){
     i.classList.remove('onstep');
@@ -438,6 +441,7 @@ function finish(){
 
   window.body.classList.remove('blurred');
   window.step.classList.toggle('hidden');
+  loadDefaultStorage();
   window.location.reload();
   clearInterval(timer);
 }
@@ -452,5 +456,6 @@ function ninethStep(){
   createHeader("Customizable mode");
   writeInfo("You can switch between customzable or read only mode", content);
   writeInfo("In the top right corner there is a switch", content);
-  writeInfo("Enable it if you wish to customize your dashboard!", content);
+  writeInfo("If the switch is on, you can confugure your dashboard", content);
+  writeInfo("Otherwise all of the customizable features are gone", content);
 }

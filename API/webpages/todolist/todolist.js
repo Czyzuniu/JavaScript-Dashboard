@@ -1,3 +1,5 @@
+
+
 window.addEventListener('load', loadNotes);
 window.input.addEventListener('input', isError);
 window.addEventListener('load', isError);
@@ -78,7 +80,6 @@ function loadNotes() {
 }
 
 function deleteNote(e) {
-
 
         var id = e.target.dataset.id;
         var xhr = new XMLHttpRequest();

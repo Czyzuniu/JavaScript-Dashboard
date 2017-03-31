@@ -58,6 +58,4 @@ create table if not exists dashboard.calendar (
 
 
 
-insert into dashboard.calendar values (1,'Valentines Day','valentines day', '2017-02-14', 'all day','all day');
-insert into dashboard.calendar values (2,'INSE Submission','Submission of the video for project prototype','2017-02-16', '00:00','23:00');
-insert into dashboard.calendar values (3,'upcomingEvent','test','2017-02-24', '10:45','12:00');
+insert ignore into dashboard.calendar values (2,'INSE Submission','Final project','2017-04-28', '00:00','23:00');

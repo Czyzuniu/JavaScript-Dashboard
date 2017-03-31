@@ -1,3 +1,5 @@
+
+
 window.addEventListener('load', function(){
   var arr = JSON.parse(localStorage.getItem('newsCategories'));
   getNews(arr);
@@ -23,7 +25,6 @@ function getNews(arr){
 
   for(var i of arr){
     sendRequest(keys[i]);
-    //console.log(i);
   }
 
 
@@ -40,8 +41,7 @@ function sendRequest(url){
             createNews(newsArray);
           }
       } else {
-          console.error('error getting pictures', xhr);
-          //window.main.innerHTML = 'sorry, something went wrong...';
+          console.error('error getting news', xhr);
       }
   }
   xhr.send();
@@ -175,7 +175,6 @@ function appendNews(arr, appender, cl){
 
     appender.classList.add(cl);
     appender.appendChild(container);
-    //console.log(news.source);
   });
   size('news');
 }

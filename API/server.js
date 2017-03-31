@@ -1,6 +1,4 @@
-/*
- * A simple example of an API-based web app that stores pictures.
- */
+
 
 'use static';
 var fs = require('fs');
@@ -36,16 +34,6 @@ var uploader = multer({
 });
 
 
-// logging
-//app.use('/', function(req, res, next) { console.log(new Date(), req.method, req.url); next(); });
-
-
-// server api
-//   POST /api/pictures     - upload a picture and its title, returns {id: ..., title: ..., file: '/img/...'}
-//   GET  /api/pictures     - list pictures ordered by time from most recent, returns [like above, like above, ...]
-//         ?order=...       - ordered by title or submission time or random
-//         ?title=...       - search by title substring
-//   DELETE /api/pictures/x - returns http status code only
 
 app.get('/api/pictures', sendPictures);
 app.get('/api/notes', sendNotes);

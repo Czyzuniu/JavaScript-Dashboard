@@ -7,8 +7,7 @@ function loadWeather(town){
       if (xhr.status === 200) {
           createWeather(JSON.parse(xhr.responseText));
       } else {
-          console.error('error getting pictures', xhr);
-          //window.main.innerHTML = 'sorry, something went wrong...';
+          console.error('error getting weather', xhr);
       }
   }
   xhr.send();
@@ -110,11 +109,6 @@ function createWeather(data){
     data.textContent = weather.day.avgtemp_c + '\u2103';
     elem.appendChild(data);
 
-        //console.log(weather.date);
-
-  //  data = document.createElement('p');
-  //  data.textContent = weather.day.condition.text;
-  //  elem.appendChild(data);
 
   });
   size('weather');

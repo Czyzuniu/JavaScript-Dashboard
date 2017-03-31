@@ -1,3 +1,5 @@
+
+
 window.addEventListener('load', loadPictures);
 window.bsettings.addEventListener('click', showSettings);
 window.addEventListener('load', allowUpload);
@@ -61,7 +63,6 @@ function loadPictures() {
             putPicturesInPage(JSON.parse(xhr.responseText));
         } else {
             console.error('error getting pictures', xhr);
-            //window.main.innerHTML = 'sorry, something went wrong...';
         }
     }
     xhr.send();
