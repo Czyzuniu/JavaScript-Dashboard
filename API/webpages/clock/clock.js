@@ -8,13 +8,12 @@ setInterval(getTime, 1000);
 var on = window.cformat;
 var classList = on.classList;
 var is24;
-var alarms = [];
-var currentTime;
-
-var alarmOn = false;
 
 
 
+/**
+ * get the time from a Date object
+ */
 function getTime(){
 
   var date = new Date();
@@ -65,11 +64,18 @@ function getTime(){
 
 }
 
+/**
+ * toggle settings
+ */
 function showSettings(){
   var settings = window.sett;
   settings.classList.toggle('hidden');
 }
 
+
+/**
+ * get settings from the database, should have use local storage for this.
+ */
 function getSettings(){
   var url = '/api/clock';
   var xhr = new XMLHttpRequest();
@@ -87,6 +93,9 @@ function getSettings(){
 
 }
 
+/**
+ * load the settings from the database
+ */
 function loadSettings(settings){
   console.log(settings);
   settings.forEach(function (s){
@@ -102,7 +111,10 @@ function loadSettings(settings){
     });
   }
 
-
+/**
+ * change settings if the user clicks on the switch
+ * send request to server to update
+ */
 function toggle(){
   var val;
   if(classList[1] == 'fa-toggle-on'){

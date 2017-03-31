@@ -64,6 +64,9 @@ function createListeners(){
   }
 }
 
+/**
+ * load all notes from the database
+ */
 function loadNotes() {
     var url = '/api/notes';
     var xhr = new XMLHttpRequest();
@@ -79,6 +82,11 @@ function loadNotes() {
     xhr.send();
 }
 
+
+/**
+ * delete note from the database
+ * @param  target
+ */
 function deleteNote(e) {
 
         var id = e.target.dataset.id;
@@ -97,6 +105,10 @@ function deleteNote(e) {
 
 }
 
+/**
+ * update the note if is clicked, make it marked as 'complete'
+ * @param  target
+ */
 function updateNote(e){
 
     var note = e.target;
@@ -116,7 +128,9 @@ function updateNote(e){
 
 }
 
-
+/**
+ * save notes to the database
+ */
 function saveNote() {
     var title = window.task.value;
     if(title.length == 0){
@@ -134,6 +148,10 @@ function saveNote() {
       }
 }
 
+/**
+ * create notes div for each of the note in the database
+ * @param  array of notes objects
+ */
 function createNotes(notes){
 
   var container = window.notes;

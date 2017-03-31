@@ -19,7 +19,11 @@ var keys = ['https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=c8598
  'https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=c8598c85665d4e61974bf83636763804']
 var names = ["Sports", "Technology", "World", "Gaming", "Business", "Programming"]
 
-
+/**
+ * load news for each of the category
+ * @param  array of categories
+ * @return data from the server
+ */
 function getNews(arr){
   var xhr = new XMLHttpRequest();
 
@@ -31,6 +35,12 @@ function getNews(arr){
 
 }
 
+
+/**
+ * send request to a server with given url
+ * @param  url of the request
+ * @return data from the server
+ */
 function sendRequest(url){
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -47,6 +57,11 @@ function sendRequest(url){
   xhr.send();
 }
 
+/**
+ * slideNews at specified interval
+ * @param  class of the div
+ * @param  time interval for sliding
+ */
 function slideNews(cl, time){
   var c = 0;
   var main = document.querySelectorAll(cl);
@@ -74,6 +89,10 @@ function slideNews(cl, time){
   setInterval(slide, time * 1000);
 }
 
+/**
+ * create news for each of the category
+ * @param  categories
+ */
 function createNews(data){
   if(data.length > 0){
     i = 0;
@@ -150,7 +169,12 @@ function createNews(data){
 }
 
 
-
+/**
+ * create a section for each of the news
+ * @param  array of news
+ * @param  which div will append
+ * @param  which class append to this element
+ */
 function appendNews(arr, appender, cl){
   arr.forEach(function(news){
     var container = document.createElement('section');
@@ -186,7 +210,9 @@ setTimeout(function(){
 },1000);
 
 
-
+/**
+ * create a settings page for the news.
+ */
 function createSettingsPage(){
   var settings = window.newsSettings;
 
@@ -247,7 +273,11 @@ function createSettingsPage(){
 
 }
 
-
+/**
+ * returns a string depending on the source of the news
+ * @param  source
+ * @return string of category name
+ */
 function getCategoriesName(source){
   switch (source) {
     case 'ars-technica': return 'Technology';
@@ -266,7 +296,9 @@ function getCategoriesName(source){
 
   }
 }
-
+/**
+ * create options for categories
+ */
 function createCategories(elem,txt){
 
   var categ = elem.value < 2 ? "category" : "categories";

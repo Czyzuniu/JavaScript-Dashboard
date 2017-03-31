@@ -1,6 +1,15 @@
-var widgets = document.querySelectorAll('.canDrag');
+window.addEventListener('load', function(){
+  loadPositions();
+  loadNews();
+});
 
+var widgets = document.querySelectorAll('.canDrag'); // get all the widgets
 
+/**
+ * load their positions from the local storage
+ * if it is null load them at their positions specified at the css
+ * and then update the localstorage
+ */
 function loadPositions(){
     var id;
 
@@ -42,9 +51,12 @@ function loadPositions(){
   }
 }
 
-loadPositions();
 
 
+/**
+ * load and set their default storage, used when there is no localstorage
+ * @return {[type]} [description]
+ */
 function loadDefaultStorage(){
 
 
@@ -70,7 +82,9 @@ function loadDefaultStorage(){
   }
 }
 
-
+/**
+ * load default news categories
+ */
 function loadNews(){
 
   var ret = localStorage.getItem('newsCategories');
@@ -81,6 +95,3 @@ function loadNews(){
 
 
 }
-
-
-loadNews();

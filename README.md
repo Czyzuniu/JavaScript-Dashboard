@@ -12,6 +12,11 @@
 
       Step 3: Type npm run dashboard - to run.
 
+                          PLEASE ONLY TEST ON CHROME
+
+      If there is a problem finishing the first tutorial,
+      please press 'skip tutorial!'
+
                                 Key features
 
       In total there is 7 different widgets, for the user to use
@@ -162,6 +167,9 @@
       code, by the time I have realised that there is something like 'let' I was
       already half-way through the api, which then links by to the first point,
       that I should not have jumped straight to coding.
+
+      I have only designed this api on google chrome, which has caused a lot of
+      bugs when running on a different browser.
 
 
                                     Reflection

@@ -3,11 +3,20 @@
 
 var elements = document.getElementsByClassName('canDrag');
 
+/**
+ * get elements positon as rectangle with left top width height
+ * @param  id of the element
+ * @return object as rectangle
+ */
 function getClientRect(id){
   var elem = document.getElementById(id);
   return elem.getBoundingClientRect()
 }
 
+/**
+ * make the element resizable by adding a div button at the bottom right corner
+ * @param  element
+ */
 function makeResizable(element){
 
   function initResize(e) {
@@ -40,7 +49,11 @@ function makeResizable(element){
 
 
 
-
+/**
+ * change the size of the insides of the element
+ * depending on the name of the element
+ * @param  id of the element
+ */
 function size(id){
   var elem = document.getElementById(id);
   rectObject = elem.getBoundingClientRect();

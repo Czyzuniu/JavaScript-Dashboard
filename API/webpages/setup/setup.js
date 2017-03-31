@@ -30,7 +30,9 @@ window.cog.addEventListener('click', function(){
   createSetupPage();
 });
 
-
+/**
+ * create a setup page where user can change his background color
+ */
 function createSetupPage(){
 
   var container = document.createElement('div');

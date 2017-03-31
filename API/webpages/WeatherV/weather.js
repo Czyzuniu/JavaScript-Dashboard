@@ -1,4 +1,10 @@
 
+
+/**
+ * load weather at the specified town with 5 days of forecast
+ * @param  specified town
+ * @return data from server
+ */
 function loadWeather(town){
   var weatherurl = 'http://api.apixu.com/v1/forecast.json?key=2e167e86455f442997e161402172602&q=' + town + '&days=5';
   var xhr = new XMLHttpRequest();
@@ -14,7 +20,10 @@ function loadWeather(town){
 
 }
 
-
+/**
+ * create weather for each object from the server
+ * @param  data from the server
+ */
 function createWeather(data){
   window.current.innerHTML = '';
   window.forecast.innerHTML = '';
@@ -116,7 +125,7 @@ function createWeather(data){
 
 var locat = localStorage.getItem('loc');
 if(locat == null){
-  loadWeather('Portsmouth');
+  loadWeather('Paris');
 }
 else {
   loadWeather(locat);

@@ -24,7 +24,7 @@ window.addEventListener('load', function(){
   }
 });
 
-
+var selectedDay;
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var weekdays = ['Monday','Tuesday', 'Wednesday','Thursday','Friday','Saturday','Sunday'];
 var date = new Date();
@@ -34,7 +34,9 @@ var year = date.getFullYear();
 var firstDay;
 
 
-
+/**
+ * make the close panel invisible
+ */
 function closeEventAdd(){
   window.addEvents.classList.add('hidden');
   if(selectedDay){
@@ -42,6 +44,9 @@ function closeEventAdd(){
   }
 }
 
+/**
+ * Add event to database
+ */
 function addEvent(){
 
   var error = false;
@@ -71,8 +76,12 @@ function addEvent(){
 
 }
 
-var selectedDay;
 
+
+/**
+ * [makes the addevents panel visible, sets default values to inputs already]
+ * @param  {[event]} e [events target]
+ */
 function openEventAdd(e){
 
 
@@ -94,16 +103,10 @@ function openEventAdd(e){
 }
 
 
-function hideShowEvents(){
-  window.events.classList.toggle('hidden');
-  if(window.events.className == 'hidden'){
-    window.hideEvents.textContent = 'Show Events';
-  }else {
-    window.hideEvents.textContent = 'Hide Events';
-  }
-}
-
-
+/**
+ * request to server to get all events from current to next month
+ * @return response text from server
+ */
 function loadEvents(){
   var selectedMonth = months.indexOf(currentM.textContent);
   var nextMonth = selectedMonth + 1;
@@ -121,6 +124,11 @@ function loadEvents(){
   xhr.send();
 }
 
+
+/**
+ * create a div in html for each of the event returned from the server
+ * @param  events [data from the server]
+ */
 function createEvents(events){
 
 
@@ -230,12 +238,18 @@ function createEvents(events){
 
 }
 
+/**
+ * update days when the month is changed.
+ */
 function updateCurrentMonth() {
     updateDays();
     currentM.textContent = months[month];
 }
 
-
+/**
+ * generates days as li from the start of the month till the end.
+ * if there is no day in such month leaves empty
+ */
 function updateDays() {
 
     //create empty days
@@ -276,18 +290,13 @@ function updateDays() {
 }
 
 
-function todaysDate() {
-    var current = "Today " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
-    var days = window.days;
-    var todayDiv = document.createElement("div");
-    todayDiv.id = "today";
-    days.appendChild(todayDiv);
-    var today = document.createElement("p");
-    today.id = "currentDate";
-    today.textContent = current;
-    todayDiv.appendChild(today);
-}
 
+/**
+ * update month at the top when clicked on arrows
+ * change year if months exceed 12
+ * @param  {[type]} e [description]
+ * @return {[type]}   [description]
+ */
 function updateMonth(e) {
     if (e.target.id == 'nextM') {
         month++;
@@ -337,7 +346,9 @@ function showUpcomingEvents() {
     loadEvents();
 }
 
-
+/**
+ * deletes an event from database upon click on red x
+ */
 function deleteEvent(e){
   var ev = e.target.parentNode;
   var question = "Are you sure you want to delete event with this title? " + ev.children[1].textContent;
@@ -361,4 +372,4 @@ function deleteEvent(e){
 }
 
 
-showTodayEvents();
+showTodayEvents(); // load events from database
